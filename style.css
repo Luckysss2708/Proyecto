@@ -1,4 +1,12 @@
 body {
+    overflow-y: auto;
+    min-height: 200vh;
+}
+
+html {
+    height: 100%;
+}
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente más moderna */
     line-height: 1.6;
     margin: 0;
