@@ -1,40 +1,54 @@
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.container');
-    const title = document.querySelector('h1');
-    const paragraphs = document.querySelectorAll('p.fade-in-text');
-    const button = document.querySelector('.button-start');
-    const disclaimer = document.querySelector('.disclaimer');
+    const title = container.querySelector('h1'); // Asegurarse de seleccionar dentro del contenedor
+    const paragraphs = container.querySelectorAll('p:not(.disclaimer)'); // Seleccionar todos los p excepto el disclaimer
+    const optionsDiv = container.querySelector('.options'); // El div que contiene los botones
+    const disclaimer = container.querySelector('.disclaimer'); // El disclaimer
+    
+    // Si el contenedor ya tiene la clase 'show' (lo cual debería ser en tus escenas)
+    // entonces animamos sus hijos inmediatamente.
+    // Esto es crucial para las páginas de las escenas.
 
-    // Añade la clase 'show' al contenedor después de un breve retraso
-    // para activar la animación de entrada del contenedor.
-    setTimeout(() => {
-        container.classList.add('show');
-
-        // Luego, anima el título
+    // Animamos el título
+    if (title) { // Verifica si el título existe
+        title.style.opacity = 0;
+        title.style.transform = 'translateY(-20px)';
         setTimeout(() => {
             title.style.opacity = 1;
             title.style.transform = 'translateY(0)';
-        }, 500); // Aparece 0.5s después del contenedor
+        }, 300); // Pequeño retraso para que el título aparezca
+    }
 
-        // Anima los párrafos secuencialmente
-        paragraphs.forEach((p, index) => {
-            setTimeout(() => {
-                p.style.opacity = 1;
-                p.style.transform = 'translateY(0)';
-            }, 800 + (index * 200)); // Cada párrafo aparece con un retraso de 200ms
-        });
-
-        // Anima el botón
+    // Animamos los párrafos secuencialmente
+    paragraphs.forEach((p, index) => {
+        p.style.opacity = 0;
+        p.style.transform = 'translateY(10px)';
         setTimeout(() => {
-            button.style.opacity = 1;
-            button.style.transform = 'scale(1)';
-        }, 800 + (paragraphs.length * 200) + 300); // Aparece después de los párrafos + un extra
+            p.style.opacity = 1;
+            p.style.transform = 'translateY(0)';
+        }, 600 + (index * 150)); // Cada párrafo aparece con un retraso de 150ms
+    });
 
-        // Anima el disclaimer
+    // Anima los botones dentro de .options
+    if (optionsDiv) {
+        const buttons = optionsDiv.querySelectorAll('.button-start');
+        buttons.forEach((button, index) => {
+            button.style.opacity = 0;
+            button.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                button.style.opacity = 1;
+                button.style.transform = 'scale(1)';
+            }, 600 + (paragraphs.length * 150) + (index * 100)); // Aparecen después de los párrafos con un pequeño retraso entre ellos
+        });
+    }
+
+    // Anima el disclaimer
+    if (disclaimer) {
+        disclaimer.style.opacity = 0;
+        disclaimer.style.transform = 'translateY(10px)';
         setTimeout(() => {
             disclaimer.style.opacity = 1;
             disclaimer.style.transform = 'translateY(0)';
-        }, 800 + (paragraphs.length * 200) + 600); // Aparece después del botón
-        
-    }, 100); // Retraso inicial para que la página cargue un poco
+        }, 600 + (paragraphs.length * 150) + (optionsDiv ? optionsDiv.querySelectorAll('.button-start').length * 100 : 0) + 200); // Aparece al final
+    }
 });
