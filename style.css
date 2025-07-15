@@ -1,162 +1,173 @@
-/* ... (resto de tu CSS anterior) ... */
+/* Importar una fuente de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
-/* El .container ya tiene opacity: 0 y transform: translateY(20px)
-   y se le añade 'show' con JS en index.html, o viene con 'show' en las escenas.
-   Su transición ya está definida en el container. */
-
-h1 {
-    color: #2c3e50;
-    margin-bottom: 25px;
-    font-size: 2.8em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    opacity: 0; /* Oculto por defecto para que JS lo anime */
-    transform: translateY(-20px); /* Desplazado para que JS lo anime */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transición CSS */
-}
-
-p {
-    margin-bottom: 18px;
-    font-size: 1.1em;
-    color: #555;
-    opacity: 0; /* Oculto por defecto para que JS lo anime */
-    transform: translateY(10px); /* Desplazado para que JS lo anime */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transición CSS */
-}
-
-.button-start {
-    display: inline-block;
-    background-color: #e74c3c;
-    color: white;
-    padding: 18px 35px;
-    text-decoration: none;
-    border-radius: 30px;
-    font-size: 1.4em;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, opacity 0.8s ease-out, transform 0.8s ease-out; /* Agregamos transiciones para opacity y transform */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    opacity: 0; /* Oculto por defecto para que JS lo anime */
-    transform: scale(0.8); /* Escala para que JS lo anime */
-    min-width: 250px;
-}
-
-/* Las reglas .container.show ... ya no son necesarias para h1, p, button-start directamente,
-   porque JavaScript las manejará a través de setTimeout. */
-
-.disclaimer {
-    font-size: 0.9em;
-    color: #95a5a6;
-    margin-top: 50px;
-    opacity: 0; /* Oculto por defecto para que JS lo anime */
-    transform: translateY(10px); /* Desplazado para que JS lo anime */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transición CSS */
-}
-
+/* Estilos generales del cuerpo */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    font-family: 'Roboto', sans-serif; /* Fuente principal */
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
-    min-height: 100vh; /* Asegura que el body sea al menos tan alto como la ventana */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Asegura que ocupe al menos el 100% de la altura de la ventana */
+    background-color: #1a1a2e; /* Color de fondo oscuro */
+    color: #e0e0e0; /* Color de texto claro */
+    overflow: hidden; /* Evita barras de desplazamiento innecesarias */
+    position: relative; /* Para posicionar el fondo animado */
 }
 
-/* Fondo degradado animado */
+/* Fondo animado */
 .background-animated {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* Asegura que el fondo cubra toda la altura de la ventana */
-    background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #FFA07A); /* Colores vibrantes */
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite; /* Animación más lenta y suave */
-    z-index: -1; /* Lo enviamos al fondo */
-    opacity: 0.8; /* Un poco de transparencia */
-    overflow: hidden; /* Mantiene el fondo contenido sin generar scroll para él */
+    height: 100%;
+    background: linear-gradient(45deg, #0f3460, #16213e, #0f3460); /* Degradado de colores */
+    background-size: 400% 400%; /* Tamaño grande para la animación */
+    animation: gradientAnimation 15s ease infinite; /* Animación de 15s */
+    z-index: -1; /* Detrás del contenido */
+    opacity: 0.8; /* Ligeramente transparente */
 }
 
+/* Animación del degradado */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
+/* Contenedor principal del juego */
 .container {
-    max-width: 800px;
-    margin: 80px auto;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 50px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    position: relative;
-    z-index: 1;
-    opacity: 0; /* Oculto por defecto para la animación JS del contenedor */
-    transform: translateY(20px); /* Ligeramente desplazado para la animación del contenedor */
-    transition: opacity 1s ease-out, transform 1s ease-out; /* Transición para JS del contenedor */
+    background-color: rgba(26, 26, 46, 0.9); /* Fondo semi-transparente para el contenedor */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra elegante */
+    text-align: center;
+    max-width: 800px; /* Ancho máximo */
+    width: 90%; /* Ancho responsivo */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho/alto */
+    position: relative; /* Para animaciones internas */
+    z-index: 1; /* Por encima del fondo */
+    overflow: hidden; /* Asegura que el contenido interno no se desborde */
+
+    /* Animación de entrada */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Animación para mostrar el contenedor principal */
 .container.show {
     opacity: 1;
     transform: translateY(0);
 }
 
+.container.hide {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* Título de la escena */
 h1 {
-    color: #2c3e50;
+    color: #e94560; /* Color de acento para el título */
     margin-bottom: 25px;
-    font-size: 2.8em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    opacity: 0; /* Oculto por defecto para que JS lo anime */
-    transform: translateY(-20px); /* Desplazado para que JS lo anime */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transición CSS */
+    font-size: 2.5em;
+    font-weight: 700;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Animación de entrada */
 }
 
+/* Párrafos de texto */
 p {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
+    line-height: 1.6;
     font-size: 1.1em;
-    color: #555;
-    opacity: 0; /* Oculto por defecto para que JS lo anime */
-    transform: translateY(10px); /* Desplazado para que JS lo anime */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transición CSS */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Animación de entrada */
 }
 
+/* Div de opciones */
 .options {
     margin-top: 30px;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
+    flex-direction: column; /* Botones en columna */
+    gap: 15px; /* Espacio entre botones */
 }
 
+/* Estilo de los botones/enlaces */
 .button-start {
-    display: inline-block;
-    background-color: #e74c3c;
+    display: block; /* Ocupa todo el ancho disponible */
+    background-color: #533483; /* Color de botón base */
     color: white;
-    padding: 18px 35px;
-    text-decoration: none;
-    border-radius: 30px;
-    font-size: 1.4em;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, opacity 0.8s ease-out, transform 0.8s ease-out;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    opacity: 0; /* Oculto por defecto para que JS lo anime */
-    transform: scale(0.8); /* Escala para que JS lo anime */
-    min-width: 250px; /* Asegura un ancho mínimo para botones largos */
+    padding: 15px 25px;
+    border-radius: 8px;
+    text-decoration: none; /* Sin subrayado */
+    font-size: 1.2em;
+    font-weight: 400;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease-out, scale 0.5s ease-out; /* Animaciones suaves */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra inicial */
+    position: relative; /* Para el porcentaje */
 }
 
 .button-start:hover {
-    background-color: #c0392b;
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    background-color: #e94560; /* Color de acento al pasar el ratón */
+    transform: translateY(-3px); /* Pequeño levantamiento */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
 }
 
+.button-start:active {
+    transform: translateY(0); /* Vuelve a la posición original al hacer clic */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Sombra más sutil */
+}
+
+/* Descargo de responsabilidad (opcional) */
 .disclaimer {
+    margin-top: 30px;
     font-size: 0.9em;
-    color: #95a5a6;
-    margin-top: 50px;
-    opacity: 0; /* Oculto por defecto para que JS lo anime */
-    transform: translateY(10px); /* Desplazado para que JS lo anime */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transición CSS */
+    color: #92b4f4;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Animación de entrada */
+}
+
+/* Estilos para el porcentaje de coincidencia (añadidos para la nueva funcionalidad) */
+.percentage-display {
+    font-size: 0.8em;
+    color: #ccc;
+    margin-left: 10px;
+    display: none; /* Oculto por defecto, se mostrará con JS */
+    transition: opacity 0.5s ease-in-out;
+}
+.options.show-percentages .percentage-display {
+    display: inline-block; /* Se muestra cuando la clase 'show-percentages' se añade al div.options */
+    opacity: 1;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    p {
+        font-size: 1em;
+    }
+    .button-start {
+        padding: 12px 20px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+        width: 95%;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    p {
+        font-size: 0.95em;
+    }
+    .button-start {
+        font-size: 1em;
+    }
 }
