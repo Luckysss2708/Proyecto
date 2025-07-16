@@ -1,145 +1,106 @@
-/* Importar una fuente de Google Fonts */
+/* Importar fuente Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
-/* Estilos generales del cuerpo */
 body {
-    font-family: 'Roboto', sans-serif; /* Fuente principal */
-    margin: 0;
-    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    margin: 0; padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Asegura que ocupe al menos el 100% de la altura de la ventana */
-    background-color: #1a1a2e; /* Color de fondo oscuro */
-    color: #e0e0e0; /* Color de texto claro */
-    overflow: hidden; /* Evita barras de desplazamiento innecesarias */
-    position: relative; /* Para posicionar el fondo animado */
+    min-height: 100vh;
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    overflow: hidden;
+    position: relative;
 }
 
-/* Fondo animado */
 .background-animated {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, #0f3460, #16213e, #0f3460); /* Degradado de colores */
-    background-size: 400% 400%; /* Tamaño grande para la animación */
-    animation: gradientAnimation 15s ease infinite; /* Animación de 15s */
-    z-index: -1; /* Detrás del contenido */
-    opacity: 0.8; /* Ligeramente transparente */
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(45deg, #0f3460, #16213e, #0f3460);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    z-index: -1;
+    opacity: 0.8;
 }
 
-/* Animación del degradado */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Contenedor principal del juego */
 .container {
-    background-color: rgba(26, 26, 46, 0.9); /* Fondo semi-transparente para el contenedor */
+    background-color: rgba(26, 26, 46, 0.9);
     padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra elegante */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     text-align: center;
-    max-width: 800px; /* Ancho máximo */
-    width: 90%; /* Ancho responsivo */
-    box-sizing: border-box; /* Incluye padding y borde en el ancho/alto */
-    position: relative; /* Para animaciones internas */
-    z-index: 1; /* Por encima del fondo */
-    overflow: hidden; /* Asegura que el contenido interno no se desborde */
+    max-width: 800px;
+    width: 90%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
 
-    /* Animación de entrada */
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: translateY(0);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.container.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.container.hide {
-    opacity: 0;
-    transform: translateY(-20px);
-}
-
-/* Título de la escena */
 h1 {
-    color: #e94560; /* Color de acento para el título */
+    color: #e94560;
     margin-bottom: 25px;
     font-size: 2.5em;
     font-weight: 700;
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Animación de entrada */
 }
 
-/* Párrafos de texto */
 p {
     margin-bottom: 20px;
     line-height: 1.6;
     font-size: 1.1em;
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Animación de entrada */
 }
 
-/* Div de opciones */
 .options {
     margin-top: 30px;
     display: flex;
-    flex-direction: column; /* Botones en columna */
-    gap: 15px; /* Espacio entre botones */
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* Estilo de los botones/enlaces */
 .button-start {
-    display: block; /* Ocupa todo el ancho disponible */
-    background-color: #533483; /* Color de botón base */
+    display: block;
+    background-color: #533483;
     color: white;
     padding: 15px 25px;
     border-radius: 8px;
-    text-decoration: none; /* Sin subrayado */
+    text-decoration: none;
     font-size: 1.2em;
     font-weight: 400;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease-out, scale 0.5s ease-out; /* Animaciones suaves */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra inicial */
-    position: relative; /* Para el porcentaje */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    cursor: pointer;
 }
 
 .button-start:hover {
-    background-color: #e94560; /* Color de acento al pasar el ratón */
-    transform: translateY(-3px); /* Pequeño levantamiento */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    background-color: #e94560;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 .button-start:active {
-    transform: translateY(0); /* Vuelve a la posición original al hacer clic */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Sombra más sutil */
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
 
-/* Descargo de responsabilidad (opcional) */
-.disclaimer {
-    margin-top: 30px;
-    font-size: 0.9em;
-    color: #92b4f4;
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Animación de entrada */
+#percentages-container p {
+    margin: 5px 0;
 }
 
-/* Estilos para el porcentaje de coincidencia (añadidos para la nueva funcionalidad) */
-.percentage-display {
-    font-size: 0.8em;
-    color: #ccc;
-    margin-left: 10px;
-    display: none; /* Oculto por defecto, se mostrará con JS */
-    transition: opacity 0.5s ease-in-out;
-}
-.options.show-percentages .percentage-display {
-    display: inline-block; /* Se muestra cuando la clase 'show-percentages' se añade al div.options */
-    opacity: 1;
-}
+/* Responsive */
 
-/* Media Queries para responsividad */
 @media (max-width: 768px) {
     .container {
         padding: 30px;
@@ -170,4 +131,9 @@ p {
     .button-start {
         font-size: 1em;
     }
+}
+.container p {
+    font-size: 1.1em;
+    color: #cccccc;
+    margin-bottom: 20px;
 }
