@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¿Quién Soy? - Código Roto</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <header>
+        <img src="imagenes/logocole.png" alt="Logo de la escuela">
+        <nav>
+            <a href="inspiracion.php">¿De qué nos inspiramos?</a>
+            <a href="quien_soy.php">¿Quién soy?</a>
+            <a href="escena.php?id=1">Comenzar Aventura</a>
+        </nav>
+    </header>
+
+    <main class="container show">
+        <h1>¿Quién Soy?</h1>
+        <p>
+            Soy un alumno de 5º año de la <strong>Escuela Técnica Nº 1 de Vicente López</strong>, 
+            apasionado por la programación y el desarrollo web. Desde hace tiempo, me interesé en crear una experiencia interactiva que 
+            permitiera a los usuarios tomar decisiones y vivir historias como en los famosos libros de 
+            <em>"Elige tu propia aventura"</em>, que marcaron mi infancia y despertaron mi imaginación.
+        </p>
+        <p>
+            Como estudiante de programación, este proyecto es para mí una oportunidad para aprender y aplicar conocimientos en 
+            desarrollo web, bases de datos y lógica interactiva, además de compartir una experiencia única con quienes visiten la página.
+            Mi objetivo es que <strong>Código Roto</strong> no solo sea un juego, sino también un espacio para reflexionar sobre las consecuencias 
+            de nuestras decisiones en la vida.
+        </p>
+        <p>
+            Espero que disfrutes esta aventura tanto como yo disfruté creándola. ¡Gracias por acompañarme en este viaje!
+        </p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -21,7 +21,8 @@ $escena = $result->fetch_assoc();
 <head>
     <meta charset="UTF-8">
     <title>Escena <?= $escena['id'] ?></title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/escena.css">
 </head>
 <body>
     <div class="container show">
