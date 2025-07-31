@@ -17,6 +17,8 @@
     </header>
 
     <main class="container show">
+        <img src="imagenes/santi.jpeg" alt="Foto de Santino Trevisano Carrasco" class="profile-photo">
+        
         <h1>¿Quién Soy?</h1>
         <p>
             Soy un alumno de 5º año de la <strong>Escuela Técnica Nº 1 de Vicente López</strong>, 
