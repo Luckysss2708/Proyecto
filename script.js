@@ -1,9 +1,9 @@
-function responder(opcion) {
-    fetch('responder.php', {
+function responder(opcion, escenaId) {
+    fetch('guardar_respuesta.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            escena: 1,
+            escena: escenaId,
             opcion: opcion
         })
     })

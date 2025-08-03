@@ -1,44 +1,42 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "juego_decisiones");
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
+session_start();
+if (!isset($_SESSION['jugador_hash'])) {
+    $_SESSION['jugador_hash'] = uniqid();
 }
 
-$id = isset($_GET['id']) ? intval($_GET['id']) : 1;
+include 'conexion.php';
 
-$sql = "SELECT * FROM escenas WHERE id = $id";
-$result = $conn->query($sql);
+$id_escena = isset($_GET['id']) ? (int)$_GET['id'] : 1;
 
-if ($result->num_rows === 0) {
-    echo "<h2>Fin del juego. No hay más escenas.</h2>";
-    exit();
-}
-
+$sql = "SELECT * FROM escenas WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id_escena);
+$stmt->execute();
+$result = $stmt->get_result();
 $escena = $result->fetch_assoc();
+
+$conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Escena <?= $escena['id'] ?></title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/escena.css">
+    <title>Escena</title>
+    <script src="script.js"></script>
 </head>
 <body>
-    <div class="container show">
-        <h1>Código Roto</h1>
-        <p><?= htmlspecialchars($escena['texto']) ?></p>
+    <h2>Escena <?php echo $escena['id']; ?></h2>
+    <p><?php echo $escena['texto']; ?></p>
 
-        <div class="options">
-            <form action="guardar_respuesta.php" method="POST">
-                <input type="hidden" name="id_escena" value="<?= $escena['id'] ?>">
-                <button class="button-start" name="opcion" value="a"><?= htmlspecialchars($escena['opcion_a']) ?></button>
-                <button class="button-start" name="opcion" value="b"><?= htmlspecialchars($escena['opcion_b']) ?></button>
-            </form>
-        </div>
-
-        <p class="disclaimer fade-in-text">Tus decisiones serán registradas de forma anónima.</p>
+    <div style="margin-bottom: 20px;">
+        <button onclick="window.location.href='final.php'">Ver mi recorrido</button>
     </div>
-    <script src="script.js"></script>
+
+    <button onclick="responder('a', <?php echo $escena['id']; ?>)">A: <?php echo $escena['opcion_a']; ?></button>
+    <button onclick="responder('b', <?php echo $escena['id']; ?>)">B: <?php echo $escena['opcion_b']; ?></button>
+
+    <p id="resultado"></p>
 </body>
 </html>
+

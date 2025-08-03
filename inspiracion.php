@@ -40,7 +40,7 @@
     <main class="container show">
         <h1>¿De qué nos inspiramos?</h1>
         <p>
-            El proyecto <strong>Código Roto</strong> nace de la combinación de varias influencias que me marcaron como jugador y lector.
+            El proyecto <strong>Código Roto</strong> surge de la combinación de varias influencias que me parecieron interesantes y atractivas.
             Principalmente, está inspirado en los libros famosos de <em>"Elige tu propia aventura"</em>, que permiten al lector tomar decisiones
             que cambian el curso de la historia y crean múltiples finales posibles.
         </p>
