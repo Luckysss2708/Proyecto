@@ -22,18 +22,18 @@
         <h1>¿Quién Soy?</h1>
         <p>
             Soy un alumno de 5º año de la <strong>Escuela Técnica Nº 1 de Vicente López</strong>, 
-            apasionado por la programación y el desarrollo web. Desde hace tiempo, me interesé en crear una experiencia interactiva que 
+            que le gusta la programación y el desarrollo web. Desde hace tiempo, me interesé en crear una experiencia interactiva que 
             permitiera a los usuarios tomar decisiones y vivir historias como en los famosos libros de 
-            <em>"Elige tu propia aventura"</em>, que marcaron mi infancia y despertaron mi imaginación.
+            <em>"Elige tu propia aventura"</em>, que marcaron un fuerte interes en mi y despertaron mi imaginación.
         </p>
         <p>
             Como estudiante de programación, este proyecto es para mí una oportunidad para aprender y aplicar conocimientos en 
-            desarrollo web, bases de datos y lógica interactiva, además de compartir una experiencia única con quienes visiten la página.
+            desarrollo web y bases de datos, además de compartir una experiencia única con quienes visiten la página.
             Mi objetivo es que <strong>Código Roto</strong> no solo sea un juego, sino también un espacio para reflexionar sobre las consecuencias 
             de nuestras decisiones en la vida.
         </p>
         <p>
-            Espero que disfrutes esta aventura tanto como yo disfruté creándola. ¡Gracias por acompañarme en este viaje!
+            Espero que disfrutes esta aventura tanto como yo, Amen.
         </p>
     </main>
 

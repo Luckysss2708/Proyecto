@@ -2,7 +2,11 @@
 session_start();
 include 'conexion.php';
 
-$jugador_hash = $_SESSION['jugador_hash'];
+$jugador_hash = $_SESSION['jugador_hash'] ?? '';
+
+if (empty($jugador_hash)) {
+    die("No se encontró sesión activa.");
+}
 
 $sql = "SELECT e.texto, 
                CASE r.opcion_elegida 
@@ -29,12 +33,16 @@ $result = $stmt->get_result();
 <body>
     <h2>Tu recorrido en el juego</h2>
 
-    <?php while ($fila = $result->fetch_assoc()): ?>
-        <div style="margin-bottom: 20px;">
-            <strong>Escena:</strong> <?php echo $fila['texto']; ?><br>
-            <strong>Elegiste:</strong> <?php echo $fila['eleccion']; ?>
-        </div>
-    <?php endwhile; ?>
+    <?php if ($result->num_rows === 0): ?>
+        <p>No tienes respuestas guardadas.</p>
+    <?php else: ?>
+        <?php while ($fila = $result->fetch_assoc()): ?>
+            <div style="margin-bottom: 20px;">
+                <strong>Escena:</strong> <?php echo htmlspecialchars($fila['texto']); ?><br>
+                <strong>Elegiste:</strong> <?php echo htmlspecialchars($fila['eleccion']); ?>
+            </div>
+        <?php endwhile; ?>
+    <?php endif; ?>
 
 </body>
 </html>

@@ -14,7 +14,6 @@
         <nav>
             <a href="inspiracion.php">¿De qué nos inspiramos?</a>
             <a href="quien_soy.php">¿Quién soy?</a>
-            <a href="escena.php?id=1">Comenzar Aventura</a>
         </nav>
     </header>
 
