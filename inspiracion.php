@@ -60,6 +60,10 @@
             </div>
         </div>
     </main>
+    <footer>
+        <p>© 2025 Código Roto. Todos los derechos reservados.</p>
+        <p>Desarrollado por Santino Trevisano</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
