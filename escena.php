@@ -25,6 +25,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($escena['nombre']) ?> - Escena <?= htmlspecialchars($escena['id']) ?></title>
+    <link rel="stylesheet" href="css/escena.css">
     <script>
     function responder(opcion, escenaId) {
         // Deshabilitar botones para esta escena para evitar múltiples respuestas
