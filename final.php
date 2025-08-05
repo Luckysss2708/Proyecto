@@ -29,6 +29,7 @@ $result = $stmt->get_result();
 <head>
     <meta charset="UTF-8">
     <title>Tu Recorrido</title>
+    <link rel="stylesheet" href="css/base.css">
 </head>
 <body>
     <h2>Tu recorrido en el juego</h2>
