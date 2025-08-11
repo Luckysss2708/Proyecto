@@ -13,6 +13,7 @@ if (!$data || !isset($data['escena']) || !isset($data['opcion'])) {
 $id_escena = (int)$data['escena'];
 $opcion = $data['opcion'];
 $jugador_hash = $_SESSION['jugador_hash'] ?? uniqid();
+$_SESSION['jugador_hash'] = $jugador_hash;
 
 if ($opcion !== 'a' && $opcion !== 'b') {
     http_response_code(400);
@@ -28,47 +29,59 @@ $result_check = $stmt_check->get_result();
 $count = $result_check->fetch_assoc()['count'];
 
 if ($count > 0) {
-    // Ya respondió: devolvemos solo los porcentajes sin insertar
+    // Si ya respondió, calculamos porcentajes y devolvemos la siguiente escena
+    $stmt_next = $conn->prepare("SELECT siguiente_a, siguiente_b FROM escenas WHERE id = ?");
+    $stmt_next->bind_param("i", $id_escena);
+    $stmt_next->execute();
+    $next_result = $stmt_next->get_result()->fetch_assoc();
+    $siguiente = ($opcion === 'a') ? $next_result['siguiente_a'] : $next_result['siguiente_b'];
+
     $total_result = $conn->query("SELECT COUNT(*) AS total FROM respuestas WHERE id_escena = $id_escena");
-    $total = (int)$total_result->fetch_assoc()['total'];
+    $total = $total_result->fetch_assoc()['total'];
 
-    $a_result = $conn->query("SELECT COUNT(*) AS a FROM respuestas WHERE id_escena = $id_escena AND opcion_elegida = 'a'");
-    $a = (int)$a_result->fetch_assoc()['a'];
+    $a_result = $conn->query("SELECT COUNT(*) AS c FROM respuestas WHERE id_escena = $id_escena AND opcion_elegida = 'a'");
+    $a_count = $a_result->fetch_assoc()['c'];
 
-    $b = $total - $a;
+    $b_result = $conn->query("SELECT COUNT(*) AS c FROM respuestas WHERE id_escena = $id_escena AND opcion_elegida = 'b'");
+    $b_count = $b_result->fetch_assoc()['c'];
 
-    header('Content-Type: application/json');
     echo json_encode([
+        'a' => $total > 0 ? round(($a_count / $total) * 100, 2) : 0,
+        'b' => $total > 0 ? round(($b_count / $total) * 100, 2) : 0,
         'error' => 'Ya respondiste esta escena.',
-        'a' => $total > 0 ? round(($a / $total) * 100) : 0,
-        'b' => $total > 0 ? round(($b / $total) * 100) : 0
+        'siguiente' => $siguiente
     ]);
     exit;
 }
 
 // Insertar respuesta
-$stmt = $conn->prepare("INSERT INTO respuestas (id_escena, opcion_elegida, jugador_hash) VALUES (?, ?, ?)");
-$stmt->bind_param("iss", $id_escena, $opcion, $jugador_hash);
-
-if (!$stmt->execute()) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Error al guardar respuesta']);
-    exit;
-}
+$stmt_insert = $conn->prepare("INSERT INTO respuestas (id_escena, opcion_elegida, jugador_hash) VALUES (?, ?, ?)");
+$stmt_insert->bind_param("iss", $id_escena, $opcion, $jugador_hash);
+$stmt_insert->execute();
 
 // Calcular porcentajes
 $total_result = $conn->query("SELECT COUNT(*) AS total FROM respuestas WHERE id_escena = $id_escena");
-$total = (int)$total_result->fetch_assoc()['total'];
+$total = $total_result->fetch_assoc()['total'];
 
-$a_result = $conn->query("SELECT COUNT(*) AS a FROM respuestas WHERE id_escena = $id_escena AND opcion_elegida = 'a'");
-$a = (int)$a_result->fetch_assoc()['a'];
+$a_result = $conn->query("SELECT COUNT(*) AS c FROM respuestas WHERE id_escena = $id_escena AND opcion_elegida = 'a'");
+$a_count = $a_result->fetch_assoc()['c'];
 
-$b = $total - $a;
+$b_result = $conn->query("SELECT COUNT(*) AS c FROM respuestas WHERE id_escena = $id_escena AND opcion_elegida = 'b'");
+$b_count = $b_result->fetch_assoc()['c'];
 
-header('Content-Type: application/json');
+// Consultar la siguiente escena
+$stmt_next = $conn->prepare("SELECT siguiente_a, siguiente_b FROM escenas WHERE id = ?");
+$stmt_next->bind_param("i", $id_escena);
+$stmt_next->execute();
+$next_result = $stmt_next->get_result()->fetch_assoc();
+$siguiente = ($opcion === 'a') ? $next_result['siguiente_a'] : $next_result['siguiente_b'];
+
+// Devolver datos
 echo json_encode([
-    'a' => $total > 0 ? round(($a / $total) * 100) : 0,
-    'b' => $total > 0 ? round(($b / $total) * 100) : 0
+    'a' => $total > 0 ? round(($a_count / $total) * 100, 2) : 0,
+    'b' => $total > 0 ? round(($b_count / $total) * 100, 2) : 0,
+    'siguiente' => $siguiente
 ]);
 
 $conn->close();
+?>

@@ -5,27 +5,6 @@
     <title>¿De qué nos inspiramos? - Código Roto</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/index.css">
-    <style>
-        .inspiration-image {
-            max-width: 300px;
-            margin: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        }
-        .images-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-        }
-        .image-caption {
-            text-align: center;
-            font-style: italic;
-            margin-top: 8px;
-            font-size: 0.9em;
-        }
-    </style>
 </head>
 <body>
     <header>
