@@ -64,7 +64,11 @@ $escena = $result->fetch_assoc();
 <body>
     <header>
         <div style="margin-top: 30px;">
-        <button onclick="window.location.href='final.php'">Ver mi recorrido</button>
+            <button onclick="window.location.href='final.php'">Ver mi recorrido</button>
+            <button onclick="window.location.href='emblemas.php'" style="margin-left: 10px;">Ver finales</button>
+    </div>
+</header>
+
     </div>
     </header>
 
