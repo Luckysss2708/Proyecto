@@ -29,6 +29,9 @@ nav a:hover {
 }
 
 main {
+    font-size: 1.2em;
+    margin: 15px 0;
+    line-height: 1.6;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,12 +53,6 @@ h1 {
     font-size: 3em;
     color: #f26c4f;
     text-shadow: 2px 2px 8px #000;
-}
-
-p {
-    font-size: 1.2em;
-    margin: 15px 0;
-    line-height: 1.6;
 }
 
 .button-start {
@@ -93,15 +90,6 @@ p {
     to { opacity: 1; }
 }
 
-footer {
-    background-color: #2b2b2b;
-    color: #888;
-    text-align: center;
-    padding: 20px;
-    border-top: 2px solid #444;
-    font-size: 0.9em;
-}
-
 /* Efecto opcional de parpadeo débil en título */
 @keyframes glitch {
     0% { text-shadow: 2px 0 red, -2px 0 cyan; }
@@ -115,3 +103,4 @@ footer {
 h1:hover {
     animation: glitch 1s linear infinite;
 }
+

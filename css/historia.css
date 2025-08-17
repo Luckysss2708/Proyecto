@@ -1,0 +1,23 @@
+/* historia.css */
+.container {
+    max-width: 800px;
+    margin: 60px auto;
+    background-color: rgba(20, 20, 20, 0.95);
+    padding: 40px;
+    border: 2px dashed #555;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 0 30px #000;
+}
+
+.container p {
+    font-size: 1.2em;
+    color: #ddd;
+    text-align: justify;
+    line-height: 1.9;
+    white-space: pre-line; /* mantiene saltos de línea en texto largo */
+}
+
+main{
+    height: calc(100vh - 160px);
+}

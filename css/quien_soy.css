@@ -27,9 +27,13 @@ h1 {
     text-shadow: 1px 1px 6px #000;
 }
 
-p {
+.container-show p {
     font-size: 1.1em;
     color: #ccc;
     text-align: justify;
     line-height: 1.8;
+}
+
+main{
+    height: calc(100vh - 160px);
 }
