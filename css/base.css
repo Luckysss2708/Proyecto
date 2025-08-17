@@ -1,0 +1,43 @@
+/* base.css */
+body {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #121212;
+    color: #e0e0e0;
+    background-image: url('../img/dirty_wall_texture.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header {
+    background-color: #1e1e1e;
+    padding: 15px 20px;
+    border-bottom: 2px solid #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+nav a {
+    color: #9fc1a3;
+    text-decoration: none;
+    margin-right: 25px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #cceabb;
+    text-shadow: 0 0 6px #ccc;
+}
+
+footer {
+    background-color: #1e1e1e;
+    color: #888;
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #333;
+    font-size: 0.9em;
+}
+
+main {
+    padding: 30px;
+}

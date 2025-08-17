@@ -1,0 +1,117 @@
+/* index.css */
+body {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    background-image: url('../img/dirty_wall_texture.jpg'); /* opcional: textura sucia */
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header {
+    background-color: #2b2b2b;
+    border-bottom: 3px solid #444;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+}
+
+nav a {
+    color: #9fc1a3;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #cceabb;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 160px);
+    padding: 20px;
+}
+
+.Principio {
+    background: rgba(34, 34, 34, 0.8);
+    padding: 30px;
+    border: 2px solid #555;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #000;
+    text-align: center;
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 3em;
+    color: #f26c4f;
+    text-shadow: 2px 2px 8px #000;
+}
+
+p {
+    font-size: 1.2em;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.button-start {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    background-color: #6e2e2e;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #922;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px #400;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.button-start:hover {
+    background-color: #922;
+    transform: scale(1.05);
+}
+
+.disclaimer {
+    font-size: 0.9em;
+    color: #aaa;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.fade-in-text {
+    animation: fadeIn 3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+footer {
+    background-color: #2b2b2b;
+    color: #888;
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #444;
+    font-size: 0.9em;
+}
+
+/* Efecto opcional de parpadeo débil en título */
+@keyframes glitch {
+    0% { text-shadow: 2px 0 red, -2px 0 cyan; }
+    20% { text-shadow: -2px 0 red, 2px 0 cyan; }
+    40% { text-shadow: 2px 0 red, -2px 0 cyan; }
+    60% { text-shadow: -2px 0 red, 2px 0 cyan; }
+    80% { text-shadow: 2px 0 red, -2px 0 cyan; }
+    100% { text-shadow: 0 0 0; }
+}
+
+h1:hover {
+    animation: glitch 1s linear infinite;
+}

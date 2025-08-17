@@ -1,0 +1,35 @@
+/* quien_soy.css */
+.container-show {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: rgba(34, 34, 34, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #555;
+    box-shadow: 0 0 25px #000;
+    text-align: center;
+}
+
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #f26c4f;
+    box-shadow: 0 0 10px #000;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #f26c4f;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 6px #000;
+}
+
+p {
+    font-size: 1.1em;
+    color: #ccc;
+    text-align: justify;
+    line-height: 1.8;
+}
