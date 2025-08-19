@@ -9,14 +9,32 @@
 </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="../index.html">Menú</a>
-            <a href="html/inspiracion.html">¿De qué nos inspiramos?</a>
-            <a href="html/quien_soy.html">¿Quién soy?</a>
-            <a href="html/historia.html">Historia</a>
-        </nav>
-    </header>
+    <?php
+session_start();
+?>
+<header>
+  <nav class="nav-header">
+    <div class="nav-left">
+      <a href="index.html">Inicio</a>
+      <a href="inspiracion.html">Inspiración</a>
+      <a href="quien_soy.html">Quién soy</a>
+      <a href="historia.html">Historia</a>
+    </div>
+    <div class="nav-right">
+      <?php if (isset($_SESSION['usuario_id'])): ?>
+        <div class="user-menu">
+          <button id="user-button"><?= htmlspecialchars($_SESSION['usuario_nombre']) ?> ⏷</button>
+          <div id="user-dropdown" class="user-dropdown hidden">
+            <a href="emblemas.php">Emblemas</a>
+            <a href="logout.php">Cerrar sesión</a>
+          </div>
+        </div>
+      <?php else: ?>
+        <a href="login.php" class="login-button">Iniciar sesión</a>
+      <?php endif; ?>
+    </div>
+  </nav>
+</header>
     <main>
         <div class="Principio">
             <h1>Código Roto</h1>

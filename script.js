@@ -13,3 +13,26 @@ function responder(opcion, escenaId) {
             `Opción A: ${data.a}% — Opción B: ${data.b}%`;
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const userButton = document.getElementById("user-button");
+  const userDropdown = document.getElementById("user-dropdown");
+
+  if (userButton && userDropdown) {
+    userButton.addEventListener("click", function (e) {
+      e.stopPropagation();
+      userDropdown.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!userButton.contains(e.target) && !userDropdown.contains(e.target)) {
+        userDropdown.classList.add("hidden");
+      }
+    });
+
+    userDropdown.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+  }
+});
+
