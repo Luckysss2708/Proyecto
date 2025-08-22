@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>¿De qué nos inspiramos? - Código Roto</title>
+    <title>.</title>
     <link rel="stylesheet" href="/Proyecto/css/base.css">
 </head>
 <body>
