@@ -3,19 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>¿Quién Soy? - Código Roto</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/quien_soy.css">
+    <link rel="stylesheet" href="/Proyecto/css/base.css">
+    <link rel="stylesheet" href="/Proyecto/css/quien_soy.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="../index.html">Menú</a>
-            <a href="inspiracion.html">¿De qué nos inspiramos?</a>
-            <a href="quien_soy.html">¿Quién soy?</a>
-            <a href="historia.html">Historia</a>
-        </nav>
-    </header>
-
+   <?php include '../FH/header.php'; ?>
     <main class="container-show">
         <img src="../imagenes/santi.jpeg" alt="Foto de Santino Trevisano Carrasco" class="profile-photo">
         
@@ -36,12 +28,7 @@
             Espero que disfrutes esta aventura tanto como yo, Amen.
         </p>
     </main>
-
-<footer id = "footer">
-    <p>© 2025 Código Roto. Todos los derechos reservados.</p>
-    <p>Desarrollado por Santino Trevisano</p>
-</footer>
-    
+<?php include '../FH/footer.php'; ?> 
     <script src="script.js"></script>
 </body>
 </html>

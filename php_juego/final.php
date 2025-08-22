@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'conexion.php';
+include '../conexion.php'; 
 
 $jugador_hash = $_SESSION['jugador_hash'] ?? '';
 

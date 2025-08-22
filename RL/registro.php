@@ -7,7 +7,8 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Registrarse - Código Roto</title>
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="/Proyecto/css/base.css">
+    <link rel="stylesheet" href="/Proyecto/css/registro.css">
     <style>
         .registro-container {
             max-width: 400px;

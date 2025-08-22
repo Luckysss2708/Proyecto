@@ -3,19 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>¿De qué nos inspiramos? - Código Roto</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/historia.css">
+    <link rel="stylesheet" href="/Proyecto/css/base.css">
+    <link rel="stylesheet" href="/Proyecto/css/historia.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="../index.html">Menú</a>
-            <a href="inspiracion.html">¿De qué nos inspiramos?</a>
-            <a href="quien_soy.html">¿Quién soy?</a>
-            <a href="historia.html">Historia</a>
-        </nav>
-    </header>
-
+<?php include '../FH/header.php'; ?>
     <main class="container show">
         <p>El Laboratorio Bassus
 Contexto:
@@ -26,11 +18,7 @@ Bassus tiene que sobrevivir… pero la supervivencia no es solo física:
 cada decisión pondrá a prueba su moral como científico y como ser humano.
         </p>
     </main>
-<footer id = "footer">
-        <p>© 2025 Código Roto. Todos los derechos reservados.</p>
-        <p>Desarrollado por Santino Trevisano</p>
-</footer>
-
-    <script src="script.js"></script>
+<?php include '../FH/footer.php'; ?> 
+    <script src="/Proyecto/script.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'conexion.php';
+include '../conexion.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['usuario_nombre'] = $usuario['nombre'];
             $_SESSION['usuario_email'] = $usuario['email'];
 
-            header("Location: index.html"); // Redirigir al inicio
+            header("Location: /Proyecto/index.php");
             exit();
         } else {
             header("Location: login.php?error=Contraseña incorrecta");

@@ -1,0 +1,44 @@
+.registro-container {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 30px;
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.6);
+        }
+
+        .registro-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .registro-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px;
+            border: none;
+            background-color: #2b2b2b;
+            color: #e0e0e0;
+            border-bottom: 2px solid #555;
+        }
+
+        .registro-container input[type="submit"] {
+            background-color: #9fc1a3;
+            color: #121212;
+            padding: 10px 15px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+        }
+
+        .success {
+            color: lightgreen;
+            text-align: center;
+        }

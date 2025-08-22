@@ -3,19 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>¿De qué nos inspiramos? - Código Roto</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/inspiracion.css">
+    <link rel="stylesheet" href="/Proyecto/css/base.css">
+    <link rel="stylesheet" href="/Proyecto/css/inspiracion.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="../index.html">Menú</a>
-            <a href="inspiracion.html">¿De qué nos inspiramos?</a>
-            <a href="quien_soy.html">¿Quién soy?</a>
-            <a href="historia.html">Historia</a>
-        </nav>
-    </header>
-
+   <?php include '../FH/header.php'; ?>
     <main class="container">
     <h1 class="titulo-inspiracion">¿De qué nos inspiramos?</h1>
 
@@ -42,12 +34,7 @@
         </div>
     </div>
 </main>
-
-<footer id = "footer">
-        <p>© 2025 Código Roto. Todos los derechos reservados.</p>
-        <p>Desarrollado por Santino Trevisano</p>
-</footer>
-
+<?php include '../FH/footer.php'; ?> 
     <script src="script.js"></script>
 </body>
 </html>
