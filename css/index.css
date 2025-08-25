@@ -4,7 +4,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
     background-color: #1a1a1a;
     color: #e0e0e0;
-    background-image: url('../img/dirty_wall_texture.jpg'); /* opcional: textura sucia */
+    background-image: url('../img/dirty_wall_texture.jpg');
     background-size: cover;
     background-attachment: fixed;
 }
@@ -35,7 +35,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 160px);
     padding: 20px;
 }
 
@@ -103,4 +102,3 @@ h1 {
 h1:hover {
     animation: glitch 1s linear infinite;
 }
-

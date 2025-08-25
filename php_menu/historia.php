@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php include '../FH/header.php'; ?>
-    <main class="container show">
+    <main class="container">
         <p>El Laboratorio Bassus
 Contexto:
 El Dr. Severino Bassus ha trabajado durante años en un proyecto ultrasecreto de bioingeniería, financiado por una corporación sin escrúpulos. El objetivo oficial: desarrollar un organismo capaz de regenerar tejido humano en segundos. La realidad: el proyecto busca crear soldados biológicamente perfectos, inmunes a la fatiga y al dolor.

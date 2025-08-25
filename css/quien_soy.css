@@ -33,7 +33,3 @@ h1 {
     text-align: justify;
     line-height: 1.8;
 }
-
-main{
-    height: calc(100vh - 160px);
-}

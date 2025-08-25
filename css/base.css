@@ -1,7 +1,9 @@
+/* Este es el código completo para tu archivo /Proyecto/css/base.css */
+
 body {
-    display: flex; /* Make the body a flex container */
-    flex-direction: column; /* Stack the elements vertically */
-    min-height: 100vh; /* Ensure the body takes up the full viewport height */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
     background-color: #121212;
@@ -28,25 +30,28 @@ nav a:hover {
     text-shadow: 0 0 6px #ccc;
 }
 
-#footer {
-    background-color: #2b2b2b !important;
-    color: #888 !important;
-    text-align: center !important;
-    padding: 20px !important;
-    border-top: 2px solid #444 !important;
-    font-size: 0.9em !important;
-}
-
-#footer p {
-    margin: 5px 0 !important;
-}
-
-
+/* La clave para que el footer se mueva abajo */
 main {
-   flex-grow: 1; /* This is the key. It makes 'main' take up all the remaining vertical space. */
-  padding: 30px;
+    flex-grow: 1; /* Esto hace que el main se expanda para llenar el espacio libre */
+    padding: 30px;
 }
 
+footer {
+    background-color: #2b2b2b;
+    color: #888;
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #444;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/* El resto de tus estilos */
 @keyframes glitch {
     0% { text-shadow: 2px 0 red, -2px 0 cyan; }
     20% { text-shadow: -2px 0 red, 2px 0 cyan; }
@@ -60,88 +65,65 @@ h1:hover {
     animation: glitch 1s linear infinite;
 }
 
-footer {
-    background-color: #2b2b2b !important;
-    color: #888 !important;
-    text-align: center !important;
-    padding: 20px !important;
-    border-top: 2px solid #444 !important;
-    font-size: 0.9em !important;
-}
-
-footer p {
-    font-size: 1.2em;
-    margin: 15px 0;
-    line-height: 1.6;
-    margin: 5px 0 !important;
-}
-
 .nav-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav-left, .nav-right {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
-/* Unificamos estilo de los enlaces y el botón del usuario */
 .nav-left a,
 .nav-right a,
 .user-menu button {
-  margin-right: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  background: none;
-  border: none;
-  color: #cceabb;
-  font-size: 16px;
-  cursor: pointer;
-  font-family: 'Courier New', Courier, monospace;
+    margin-right: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    background: none;
+    border: none;
+    color: #cceabb;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-/* Aseguramos que el botón tenga padding y se vea como un ítem del nav */
 .user-menu button {
-  padding: 5px 10px;
+    padding: 5px 10px;
 }
 
-/* Posición del contenedor del menú */
 .user-menu {
-  position: relative;
+    position: relative;
 }
 
-/* Estilo del menú desplegable */
 .user-dropdown {
-  position: absolute;
-  top: 35px; /* ajustado para que no se superponga */
-  right: 0;
-  background-color: #1e1e1e;
-  border: 1px solid #cceabb;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  z-index: 100;
-  min-width: 150px;
-  font-family: 'Courier New', Courier, monospace; /* aseguramos misma fuente */
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background-color: #1e1e1e;
+    border: 1px solid #cceabb;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    min-width: 150px;
+    font-family: 'Courier New', Courier, monospace; 
 }
 
-/* Links dentro del menú */
 .user-dropdown a {
-  padding: 10px 15px;
-  color: #cceabb;
-  text-decoration: none;
-  font-size: 15px;
-  text-align: center;
+    padding: 10px 15px;
+    color: #cceabb;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
 }
 
 .user-dropdown a:hover {
-  background-color: #2a2a2a;
+    background-color: #2a2a2a;
 }
 
-/* Clase para ocultar el menú */
 .hidden {
-  display: none;
+    display: none;
 }
-

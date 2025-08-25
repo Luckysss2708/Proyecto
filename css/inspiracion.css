@@ -1,4 +1,4 @@
-/* inspiracion.css */
+
 .container {
     max-width: 1000px;
     margin: auto;
@@ -51,8 +51,4 @@
     margin-top: 8px;
     color: #bbb;
     font-size: 0.9em;
-}
-
-main{
-    height: calc(100vh - 160px);
 }

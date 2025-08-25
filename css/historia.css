@@ -1,6 +1,6 @@
 /* historia.css */
 .container {
-    max-width: 800px;
+    max-width: 800px; /* Cambia 'auto' por un valor fijo como 800px */
     margin: 60px auto;
     background-color: rgba(20, 20, 20, 0.95);
     padding: 40px;
@@ -15,9 +15,5 @@
     color: #ddd;
     text-align: justify;
     line-height: 1.9;
-    white-space: pre-line; /* mantiene saltos de línea en texto largo */
-}
-
-main{
-    height: calc(100vh - 160px);
+    white-space: pre-line;
 }
