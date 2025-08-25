@@ -2,6 +2,9 @@
 session_start();
 include '../conexion.php'; 
 
+// Establecer el encabezado para que la respuesta sea JSON
+header('Content-Type: application/json');
+
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (!$data || !isset($data['escena']) || !isset($data['opcion'])) {
@@ -12,6 +15,9 @@ if (!$data || !isset($data['escena']) || !isset($data['opcion'])) {
 
 $id_escena = (int)$data['escena'];
 $opcion = $data['opcion'];
+
+// Usar el ID de usuario si ha iniciado sesión, de lo contrario usar un hash anónimo
+$usuario_id = $_SESSION['usuario_id'] ?? null;
 $jugador_hash = $_SESSION['jugador_hash'] ?? uniqid();
 $_SESSION['jugador_hash'] = $jugador_hash;
 
@@ -22,8 +28,8 @@ if ($opcion !== 'a' && $opcion !== 'b') {
 }
 
 // Verificar si ya respondió esta escena
-$stmt_check = $conn->prepare("SELECT COUNT(*) AS count FROM respuestas WHERE id_escena = ? AND jugador_hash = ?");
-$stmt_check->bind_param("is", $id_escena, $jugador_hash);
+$stmt_check = $conn->prepare("SELECT COUNT(*) AS count FROM respuestas WHERE id_escena = ? AND usuario_id = ?");
+$stmt_check->bind_param("ii", $id_escena, $usuario_id);
 $stmt_check->execute();
 $result_check = $stmt_check->get_result();
 $count = $result_check->fetch_assoc()['count'];
@@ -55,8 +61,8 @@ if ($count > 0) {
 }
 
 // Insertar respuesta
-$stmt_insert = $conn->prepare("INSERT INTO respuestas (id_escena, opcion_elegida, jugador_hash) VALUES (?, ?, ?)");
-$stmt_insert->bind_param("iss", $id_escena, $opcion, $jugador_hash);
+$stmt_insert = $conn->prepare("INSERT INTO respuestas (id_escena, opcion_elegida, usuario_id) VALUES (?, ?, ?)");
+$stmt_insert->bind_param("isi", $id_escena, $opcion, $usuario_id);
 $stmt_insert->execute();
 
 // Calcular porcentajes
@@ -74,7 +80,14 @@ $stmt_next = $conn->prepare("SELECT siguiente_a, siguiente_b FROM escenas WHERE 
 $stmt_next->bind_param("i", $id_escena);
 $stmt_next->execute();
 $next_result = $stmt_next->get_result()->fetch_assoc();
-$siguiente = ($opcion === 'a') ? $next_result['siguiente_a'] : $next_result['siguiente_b'];
+
+if (!$next_result) {
+    // Manejar el caso de que la escena no exista (aunque debería estar cubierta)
+    $siguiente = null;
+} else {
+    $siguiente = ($opcion === 'a') ? $next_result['siguiente_a'] : $next_result['siguiente_b'];
+}
+
 
 // Devolver datos
 echo json_encode([

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>.</title>
     <link rel="stylesheet" href="/Proyecto/css/base.css">
+    <script src="/Proyecto/script.js"></script>
 </head>
 <body>
     <header>

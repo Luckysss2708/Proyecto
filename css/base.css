@@ -1,12 +1,14 @@
-/* Este es el código completo para tu archivo /Proyecto/css/base.css */
+
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
+    background-image: url(/Proyecto/imagenes/fondo.PNG);
+    background-repeat: no-repeat;
+    background-size: 100%;
     font-family: 'Courier New', Courier, monospace;
-    background-color: #121212;
     color: #e0e0e0;
 }
 

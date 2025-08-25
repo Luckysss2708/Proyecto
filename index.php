@@ -5,7 +5,6 @@
     <title>Código Roto</title>
     <link rel="stylesheet" href="/Proyecto/css/base.css">
     <link rel="stylesheet" href="/Proyecto/css/index.css">
-    <script src="/Proyecto/script.js"></script>
     <style>
 </style>
 </head>
