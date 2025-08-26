@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/Proyecto/css/historia.css">
 </head>
 <body>
+    <?php
+session_start();
+?>
 <?php include '../FH/header.php'; ?>
     <main class="container">
         <p>El Laboratorio Bassus

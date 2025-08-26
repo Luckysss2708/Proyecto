@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="/Proyecto/css/quien_soy.css">
 </head>
 <body>
+    <?php
+session_start();
+?>
    <?php include '../FH/header.php'; ?>
     <main class="container-show">
-        <img src="../imagenes/santi.jpeg" alt="Foto de Santino Trevisano Carrasco" class="profile-photo">
+        <img src="/Proyecto/imagenes/santi.jpeg" alt="Foto de Santino Trevisano Carrasco" class="profile-photo">
         
         <h1>¿Quién Soy?</h1>
         <p>

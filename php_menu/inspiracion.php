@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/Proyecto/css/inspiracion.css">
 </head>
 <body>
+    <?php
+session_start();
+?>
    <?php include '../FH/header.php'; ?>
     <main class="container">
     <h1 class="titulo-inspiracion">¿De qué nos inspiramos?</h1>

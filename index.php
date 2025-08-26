@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,10 +12,7 @@
 </style>
 </head>
 <body>
-    <?php
-session_start();
-?>
-<?php include 'FH/header.php'; ?>
+    <?php include 'FH/header.php'; ?>
     <main>
         <div class="Principio">
             <h1>Código Roto</h1>
