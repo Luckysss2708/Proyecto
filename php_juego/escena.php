@@ -76,6 +76,12 @@ $escena = $result->fetch_assoc();
     </main>
 
     <footer>
+        <div class="footer-buttons">
+            <a href="/Proyecto/php_juego/reiniciar_partida.php" class="footer-button">Reiniciar Partida</a>
+            <a href="/Proyecto/php_juego/finales.php" class="footer-button">Ver Finales</a>
+            <a href="/Proyecto/php_juego/emblemas.php" class="footer-button">Emblemas</a>
+            <a href="/Proyecto/index.php" class="footer-button">Volver al Menú</a>
+        </div>
         <p>Copyright © 2025. Todos los derechos reservados.</p>
         <p>Hecho con ❤️ por Santino Trevisano Carrasco</p>
     </footer>

@@ -1,0 +1,25 @@
+Gitconfig
+git config --global user.name "Luckysss2708"
+git config --global user.email "Trevisanosantino@gmail.com"
+
+Servidor:
+usuario: strevisano
+contraseña: RedesInformaticas
+
+Conexion:
+crtl+shft+p
+>shh add
+SSH FS Add workspace
+strevisano@server-prog
+RedesInformaticas
+
+Trabajar
+-Entramos en la carpeta home
+-luego vamos a mi usuario strevisano
+-luego abrimos la carpeta alumnos con ssh FS
+-hacemos un git clone https://github.com/Luckysss2708/Proyecto en la terminal
+
+Link: http://server-prog/trevisano
+Link BD: http://server-prog/phpmyadmin
+---Usuario: phpmyadmin
+---Contraseña: RedesInformaticas
