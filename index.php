@@ -21,14 +21,12 @@ include 'conexion.php';
             <h1>¿Estás listo para enfrentar dilemas que pondrán a prueba tu moralidad y tus principios?</h1>
             <p>Inspirado en los dilemas clásicos del tranvía y las historias "Elige tu propia aventura".</p>
             <?php
-            // Lógica para el botón "Comenzar/Continuar Aventura"
             $link = "/Proyecto/php_juego/escena.php?id=1";
             $button_text = "Comenzar Aventura";
             
             if (isset($_SESSION['usuario_id'])) {
                 $usuario_id = $_SESSION['usuario_id'];
                 
-                // Buscar la última escena jugada por el usuario
                 $sql = "SELECT id_escena FROM respuestas WHERE usuario_id = ? ORDER BY fecha DESC LIMIT 1";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("i", $usuario_id);
@@ -42,7 +40,6 @@ include 'conexion.php';
                     $button_text = "Continuar Aventura";
                 }
             }
-            // Cerrar la conexión
             if (isset($conn)) {
                 $conn->close();
             }
