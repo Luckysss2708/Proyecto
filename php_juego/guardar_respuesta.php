@@ -1,100 +1,76 @@
 <?php
 session_start();
-include '../conexion.php'; 
+require_once "../conexion.php"; // Ajusta la ruta según tu proyecto
 
-// Establecer el encabezado para que la respuesta sea JSON
-header('Content-Type: application/json');
+header("Content-Type: application/json; charset=utf-8");
 
+// Validar sesión
+if (!isset($_SESSION['usuario_id'])) {
+    echo json_encode(["error" => "No autenticado"]);
+    exit;
+}
+
+// Validar entrada
 $data = json_decode(file_get_contents("php://input"), true);
-
-if (!$data || !isset($data['escena']) || !isset($data['opcion'])) {
-    http_response_code(400);
-    echo json_encode(['error' => 'Datos incompletos']);
+if (!$data || !isset($data['escena'], $data['opcion'])) {
+    echo json_encode(["error" => "Datos incompletos"]);
     exit;
 }
 
-$id_escena = (int)$data['escena'];
-$opcion = $data['opcion'];
+$usuario_id = (int) $_SESSION['usuario_id'];
+$escena_id  = (int) $data['escena'];
+$opcion     = $data['opcion'] === "a" ? "a" : "b";
 
-// Usar el ID de usuario si ha iniciado sesión, de lo contrario usar un hash anónimo
-$usuario_id = $_SESSION['usuario_id'] ?? null;
-$jugador_hash = $_SESSION['jugador_hash'] ?? uniqid();
-$_SESSION['jugador_hash'] = $jugador_hash;
+// Verificar que la escena exista
+$sql = "SELECT * FROM escenas WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $escena_id);
+$stmt->execute();
+$res = $stmt->get_result();
+$escena = $res->fetch_assoc();
+$stmt->close();
 
-if ($opcion !== 'a' && $opcion !== 'b') {
-    http_response_code(400);
-    echo json_encode(['error' => 'Opción inválida']);
+if (!$escena) {
+    echo json_encode(["error" => "Escena no encontrada"]);
     exit;
 }
 
-// Verificar si ya respondió esta escena
-$stmt_check = $conn->prepare("SELECT COUNT(*) AS count FROM respuestas WHERE id_escena = ? AND usuario_id = ?");
-$stmt_check->bind_param("ii", $id_escena, $usuario_id);
-$stmt_check->execute();
-$result_check = $stmt_check->get_result();
-$count = $result_check->fetch_assoc()['count'];
+// Guardar la respuesta SIEMPRE (historial)
+$stmt = $conn->prepare(
+    "INSERT INTO respuestas (id_escena, opcion_elegida, usuario_id) VALUES (?, ?, ?)"
+);
+$stmt->bind_param("isi", $escena_id, $opcion, $usuario_id);
+$stmt->execute();
+$stmt->close();
 
-if ($count > 0) {
-    // Si ya respondió, calculamos porcentajes y devolvemos la siguiente escena
-    $stmt_next = $conn->prepare("SELECT siguiente_a, siguiente_b FROM escenas WHERE id = ?");
-    $stmt_next->bind_param("i", $id_escena);
-    $stmt_next->execute();
-    $next_result = $stmt_next->get_result()->fetch_assoc();
-    $siguiente = ($opcion === 'a') ? $next_result['siguiente_a'] : $next_result['siguiente_b'];
+// Calcular estadísticas globales de esa escena
+$totalRes = $conn->query("SELECT COUNT(*) AS total FROM respuestas WHERE id_escena = $escena_id")->fetch_assoc();
+$total = $totalRes['total'] ?? 0;
 
-    $total_result = $conn->query("SELECT COUNT(*) AS total FROM respuestas WHERE id_escena = $id_escena");
-    $total = $total_result->fetch_assoc()['total'];
+$aRes = $conn->query("SELECT COUNT(*) AS c FROM respuestas WHERE id_escena = $escena_id AND opcion_elegida = 'a'")->fetch_assoc();
+$bRes = $conn->query("SELECT COUNT(*) AS c FROM respuestas WHERE id_escena = $escena_id AND opcion_elegida = 'b'")->fetch_assoc();
 
-    $a_result = $conn->query("SELECT COUNT(*) AS c FROM respuestas WHERE id_escena = $id_escena AND opcion_elegida = 'a'");
-    $a_count = $a_result->fetch_assoc()['c'];
+$porc_a = $total > 0 ? round(($aRes['c'] / $total) * 100, 1) : 0;
+$porc_b = $total > 0 ? round(($bRes['c'] / $total) * 100, 1) : 0;
 
-    $b_result = $conn->query("SELECT COUNT(*) AS c FROM respuestas WHERE id_escena = $id_escena AND opcion_elegida = 'b'");
-    $b_count = $b_result->fetch_assoc()['c'];
+// Determinar siguiente escena según opción
+$siguiente = ($opcion === "a") ? $escena['siguiente_a'] : $escena['siguiente_b'];
 
-    echo json_encode([
-        'a' => $total > 0 ? round(($a_count / $total) * 100, 2) : 0,
-        'b' => $total > 0 ? round(($b_count / $total) * 100, 2) : 0,
-        'error' => 'Ya respondiste esta escena.',
-        'siguiente' => $siguiente
-    ]);
-    exit;
+// Si no hay siguiente (es un final), guardar desbloqueo en usuario_finales
+if (is_null($siguiente)) {
+    // Buscar o registrar final correspondiente (si los estás mapeando)
+    // Ejemplo: usar id de la escena como final
+    $final_id = $escena_id;
+
+    $stmt = $conn->prepare("INSERT IGNORE INTO usuario_finales (usuario_id, final_id) VALUES (?, ?)");
+    $stmt->bind_param("ii", $usuario_id, $final_id);
+    $stmt->execute();
+    $stmt->close();
 }
 
-// Insertar respuesta
-$stmt_insert = $conn->prepare("INSERT INTO respuestas (id_escena, opcion_elegida, usuario_id) VALUES (?, ?, ?)");
-$stmt_insert->bind_param("isi", $id_escena, $opcion, $usuario_id);
-$stmt_insert->execute();
-
-// Calcular porcentajes
-$total_result = $conn->query("SELECT COUNT(*) AS total FROM respuestas WHERE id_escena = $id_escena");
-$total = $total_result->fetch_assoc()['total'];
-
-$a_result = $conn->query("SELECT COUNT(*) AS c FROM respuestas WHERE id_escena = $id_escena AND opcion_elegida = 'a'");
-$a_count = $a_result->fetch_assoc()['c'];
-
-$b_result = $conn->query("SELECT COUNT(*) AS c FROM respuestas WHERE id_escena = $id_escena AND opcion_elegida = 'b'");
-$b_count = $b_result->fetch_assoc()['c'];
-
-// Consultar la siguiente escena
-$stmt_next = $conn->prepare("SELECT siguiente_a, siguiente_b FROM escenas WHERE id = ?");
-$stmt_next->bind_param("i", $id_escena);
-$stmt_next->execute();
-$next_result = $stmt_next->get_result()->fetch_assoc();
-
-if (!$next_result) {
-    // Manejar el caso de que la escena no exista (aunque debería estar cubierta)
-    $siguiente = null;
-} else {
-    $siguiente = ($opcion === 'a') ? $next_result['siguiente_a'] : $next_result['siguiente_b'];
-}
-
-
-// Devolver datos
+// Respuesta JSON
 echo json_encode([
-    'a' => $total > 0 ? round(($a_count / $total) * 100, 2) : 0,
-    'b' => $total > 0 ? round(($b_count / $total) * 100, 2) : 0,
-    'siguiente' => $siguiente
+    "a"         => $porc_a,
+    "b"         => $porc_b,
+    "siguiente" => $siguiente
 ]);
-
-$conn->close();
-?>

@@ -18,7 +18,6 @@ include 'conexion.php';
     <main>
         <div class="Principio">
             <img src="/Proyecto/imagenes/logo.png" alt="Logo broken code" class="inspiration-image">
-            <h1>¿Estás listo para enfrentar dilemas que pondrán a prueba tu moralidad y tus principios?</h1>
             <p>Inspirado en los dilemas clásicos del tranvía y las historias "Elige tu propia aventura".</p>
             <?php
             $link = "/Proyecto/php_juego/escena.php?id=1";

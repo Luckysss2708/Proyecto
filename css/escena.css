@@ -1,21 +1,14 @@
-/* escena.css */
 
-/*
-* He eliminado los estilos de body, header y footer
-* ya que estos ya están definidos en base.css.
-* Esto evita duplicidad y posibles conflictos.
-*/
 
 main {
     max-width: 800px;
-    /* Eliminé el margin-top de 160px para que el Flexbox de base.css funcione */
     margin: 40px auto;
     background-color: rgba(20, 20, 20, 0.95);
     padding: 40px;
     border: 2px dashed #555;
     border-radius: 10px;
     box-shadow: 0 0 30px #000;
-    text-align: center; /* Centré el contenido dentro del main para esta página específica */
+    text-align: center; 
 }
 
 main h1 {
@@ -80,7 +73,6 @@ main button:hover {
     transform: scale(1.05);
 }
 
-/* Nuevos estilos para los resultados con efectos */
 
 #resultado {
     color: #f0f0f0;
@@ -106,11 +98,37 @@ main button:hover {
     font-size: 1.3em;
 }
 
-/* Efectos visuales para los porcentajes */
+
 #porcentaje-a {
-    color: #9fc1a3; /* O un color que te guste para la Opción A */
+    color: #9fc1a3; 
 }
 
 #porcentaje-b {
-    color: #f26c4f; /* O un color para la Opción B */
+    color: #f26c4f; 
+}
+
+.footer-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1%;
+}
+
+.footer-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    background-color: #6e2e2e;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #922;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px #400;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.footer-button:hover {
+    background-color: #922;
+    transform: scale(1.05);
 }

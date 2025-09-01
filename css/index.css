@@ -1,8 +1,7 @@
-/* index.css */
+
 body {
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
-    background-color: #1a1a1a;
     color: #e0e0e0;
     background-size: cover;
     background-attachment: fixed;
@@ -24,14 +23,6 @@ main {
     text-align: center;
     max-width: 600px;
 }
-
-h1 {
-    font-size: 1.2em; /* Cambiado a un tamaño más pequeño */
-    color: #FF5733; /* Color rojo vibrante */
-    text-shadow: 2px 2px 8px #000;
-    animation: glitch 1s linear infinite; /* Efecto siempre activo */
-}
-
 .button-start {
     display: inline-block;
     margin-top: 20px;
@@ -75,4 +66,10 @@ h1 {
     60% { text-shadow: -2px 0 #FF5733, 2px 0 #33C7FF; }
     80% { text-shadow: 2px 0 #FF5733, -2px 0 #33C7FF; }
     100% { text-shadow: 0 0 0; }
+}
+
+img {
+    width: 120%;
+    height: 120%;
+    padding-right: 40%;
 }

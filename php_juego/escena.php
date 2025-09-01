@@ -27,30 +27,6 @@ $escena = $result->fetch_assoc();
     <link rel="stylesheet" href="/Proyecto/css/base.css" />
 </head>
 <body>
-    <header>
-        <nav class="nav-header">
-            <div class="nav-left">
-                <a href="/Proyecto/index.php">Inicio</a>
-                <a href="/Proyecto/php_menu/inspiracion.php">Inspiración</a>
-                <a href="/Proyecto/php_menu/quien_soy.php">Quién soy</a>
-                <a href="/Proyecto/php_menu/historia.php">Historia</a>
-            </div>
-            <div class="nav-right">
-                <?php if (isset($_SESSION['usuario_id'])): ?>
-                    <div class="user-menu">
-                        <button id="user-button"><?= htmlspecialchars($_SESSION['usuario_nombre']) ?> ⏷</button>
-                        <div id="user-dropdown" class="user-dropdown hidden">
-                            <a href="/Proyecto/php_juego/emblemas.php">Emblemas</a>
-                            <a href="/Proyecto/RL/logout.php">Cerrar sesión</a>
-                        </div>
-                    </div>
-                <?php else: ?>
-                    <a href="/Proyecto/RL/login.php" class="login-button">Iniciar sesión</a>
-                <?php endif; ?>
-            </div>
-        </nav>
-    </header>
-
     <main class="container">
         <h1><?= htmlspecialchars($escena['nombre']) ?></h1>
         <p><?= nl2br(htmlspecialchars($escena['texto'])) ?></p>
@@ -82,8 +58,6 @@ $escena = $result->fetch_assoc();
             <a href="/Proyecto/php_juego/emblemas.php" class="footer-button">Emblemas</a>
             <a href="/Proyecto/index.php" class="footer-button">Volver al Menú</a>
         </div>
-        <p>Copyright © 2025. Todos los derechos reservados.</p>
-        <p>Hecho con ❤️ por Santino Trevisano Carrasco</p>
     </footer>
 
     <script src="/Proyecto/script.js"></script>

@@ -1,6 +1,7 @@
 
 
 body {
+    background-color: #222222;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -31,26 +32,27 @@ nav a:hover {
     text-shadow: 0 0 6px #ccc;
 }
 
-/* La clave para que el footer se mueva abajo */
 main {
-    flex-grow: 1; /* Esto hace que el main se expanda para llenar el espacio libre */
-    padding: 30px;
+    flex-grow: 1; 
 }
 
 footer {
-    background-color: #2b2b2b;
-    color: #888;
+    background-color: #1e1e1e;       
+    color: #cceabb;                  
     text-align: center;
     padding: 20px;
-    border-top: 2px solid #444;
-    font-size: 0.9em;
+    border-top: 2px solid #333;      
+    font-size: 0.95em;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.6); 
 }
 
 footer p {
-    margin: 5px 0;
-    font-size: 1.2em;
+    margin: 8px 0;
+    font-size: 1em;
     line-height: 1.6;
+    color: #9fc1a3;                 
 }
+
 
 /* El resto de tus estilos */
 @keyframes glitch {
