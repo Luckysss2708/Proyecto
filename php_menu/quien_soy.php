@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>¿Quién Soy? - Código Roto</title>
-    <link rel="stylesheet" href="/Proyecto/css/base.css">
-    <link rel="stylesheet" href="/Proyecto/css/quien_soy.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/quien_soy.css">
 </head>
 <body>
     <?php
@@ -12,7 +12,7 @@ session_start();
 ?>
    <?php include '../FH/header.php'; ?>
     <main class="container-show">
-        <img src="/Proyecto/imagenes/santi.jpeg" alt="Foto de Santino Trevisano Carrasco" class="profile-photo">
+        <img src="../imagenes/santi.jpeg" alt="Foto de Santino Trevisano Carrasco" class="profile-photo">
         
         <h1>¿Quién Soy?</h1>
         <p>
@@ -32,6 +32,6 @@ session_start();
         </p>
     </main>
 <?php include '../FH/footer.php'; ?> 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>

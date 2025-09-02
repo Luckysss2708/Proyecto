@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>¿De qué nos inspiramos? - Código Roto</title>
-    <link rel="stylesheet" href="/Proyecto/css/base.css">
-    <link rel="stylesheet" href="/Proyecto/css/historia.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/historia.css">
 </head>
 <body>
     <?php
@@ -22,6 +22,6 @@ cada decisión pondrá a prueba su moral como científico y como ser humano.
         </p>
     </main>
 <?php include '../FH/footer.php'; ?> 
-    <script src="/Proyecto/script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>

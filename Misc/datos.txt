@@ -10,7 +10,7 @@ Conexion:
 crtl+shft+p
 >shh add
 SSH FS Add workspace
-strevisano@server-prog
+strevisano@server-prog/home/strevisano/alumnos/trevisano
 RedesInformaticas
 
 Trabajar
@@ -20,6 +20,6 @@ Trabajar
 -hacemos un git clone https://github.com/Luckysss2708/Proyecto en la terminal
 
 Link: http://server-prog/trevisano
-Link BD: http://server-prog/phpmyadmin
+Link BD: http://server-prog/phpmyadmin: 
 ---Usuario: phpmyadmin
 ---Contraseña: RedesInformaticas

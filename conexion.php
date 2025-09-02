@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
-$usuario = 'root';
-$clave = '';
+$usuario = 'phpmyadmin';
+$clave = 'RedesInformaticas';
 $bd = 'juego_decisiones';
 
 $conn = new mysqli($host, $usuario, $clave, $bd);

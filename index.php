@@ -1,15 +1,14 @@
 <?php
+include 'conexion.php'; 
 session_start();
-// Se incluye el archivo de conexión. La ruta es directa porque ambos archivos están en el mismo nivel.
-include 'conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Código Roto</title>
-    <link rel="stylesheet" href="/Proyecto/css/base.css">
-    <link rel="stylesheet" href="/Proyecto/css/index.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
     <style>
 </style>
 </head>
@@ -17,10 +16,10 @@ include 'conexion.php';
     <?php include 'FH/header.php'; ?>
     <main>
         <div class="Principio">
-            <img src="/Proyecto/imagenes/logo.png" alt="Logo broken code" class="inspiration-image">
+            <img src="imagenes/logo.png" alt="Logo broken code" class="inspiration-image">
             <p>Inspirado en los dilemas clásicos del tranvía y las historias "Elige tu propia aventura".</p>
             <?php
-            $link = "/Proyecto/php_juego/escena.php?id=1";
+            $link = "php_juego/escena.php?id=1";
             $button_text = "Comenzar Aventura";
             
             if (isset($_SESSION['usuario_id'])) {
@@ -35,7 +34,7 @@ include 'conexion.php';
                 if ($result->num_rows > 0) {
                     $last_escena = $result->fetch_assoc();
                     $last_id = $last_escena['id_escena'];
-                    $link = "/Proyecto/php_juego/escena.php?id=" . ($last_id + 1);
+                    $link = "php_juego/escena.php?id=" . ($last_id + 1);
                     $button_text = "Continuar Aventura";
                 }
             }
@@ -48,6 +47,6 @@ include 'conexion.php';
         </div>  
     </main>
     <?php include 'FH/footer.php'; ?> 
-    <script src="/Proyecto/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

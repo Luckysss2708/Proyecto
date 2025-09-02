@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: /Proyecto/RL/login.php");
+    header("Location: ../RL/login.php");
     exit();
 }
 
@@ -23,8 +23,8 @@ $escena = $result->fetch_assoc();
 <head>
     <meta charset="UTF-8" />
     <title><?= htmlspecialchars($escena['nombre']) ?> - Escena <?= htmlspecialchars($escena['id']) ?></title>
-    <link rel="stylesheet" href="/Proyecto/css/escena.css" />
-    <link rel="stylesheet" href="/Proyecto/css/base.css" />
+    <link rel="stylesheet" href="../css/escena.css" />
+    <link rel="stylesheet" href="../css/base.css" />
 </head>
 <body>
     <main class="container">
@@ -53,14 +53,13 @@ $escena = $result->fetch_assoc();
 
     <footer>
         <div class="footer-buttons">
-            <a href="/Proyecto/php_juego/reiniciar_partida.php" class="footer-button">Reiniciar Partida</a>
-            <a href="/Proyecto/php_juego/finales.php" class="footer-button">Ver Finales</a>
-            <a href="/Proyecto/php_juego/emblemas.php" class="footer-button">Emblemas</a>
-            <a href="/Proyecto/index.php" class="footer-button">Volver al Menú</a>
+            <a href="reiniciar_partida.php" class="footer-button">Reiniciar Partida</a>
+            <a href="finales.php" class="footer-button">Ver Finales</a>
+            <a href="index.php" class="footer-button">Volver al Menú</a>
         </div>
     </footer>
 
-    <script src="/Proyecto/script.js"></script>
+    <script src="../script.js"></script>
 
     <script>
     function responder(opcion, escenaId) {
@@ -92,7 +91,7 @@ $escena = $result->fetch_assoc();
 
             setTimeout(() => {
                 window.location.href = `escena.php?id=${data.siguiente}`;
-            }, 3000); // 3 segundos para que el usuario vea el resultado
+            }, 3500); // 3 segundos para que el usuario vea el resultado
         })
         .catch(error => {
             console.error('Error:', error);

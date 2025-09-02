@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("sss", $nombre, $email, $hash);
 
     if ($stmt->execute()) {
-        header("Location: /Proyecto/index.php");
+        header("Location: ../index.php");
         exit();
     } else {
         header("Location: registro.php?error=Error al registrar usuario.");

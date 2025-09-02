@@ -7,8 +7,8 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión - Código Roto</title>
-    <link rel="stylesheet" href="/Proyecto/css/base.css">
-    <link rel="stylesheet" href="/Proyecto/css/login.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     <div class="login-container">

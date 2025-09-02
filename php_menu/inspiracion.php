@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>¿De qué nos inspiramos? - Código Roto</title>
-    <link rel="stylesheet" href="/Proyecto/css/base.css">
-    <link rel="stylesheet" href="/Proyecto/css/inspiracion.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/inspiracion.css">
 </head>
 <body>
     <?php
@@ -38,6 +38,6 @@ session_start();
     </div>
 </main>
 <?php include '../FH/footer.php'; ?> 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>
