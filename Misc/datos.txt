@@ -12,7 +12,7 @@ crtl+shft+p
 SSH FS Add workspace
 strevisano@server-prog/home/strevisano/alumnos/trevisano
 RedesInformaticas
-
+S
 Trabajar
 -Entramos en la carpeta home
 -luego vamos a mi usuario strevisano
