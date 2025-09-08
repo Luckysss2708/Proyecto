@@ -55,7 +55,7 @@ $escena = $result->fetch_assoc();
         <div class="footer-buttons">
             <a href="reiniciar_partida.php" class="footer-button">Reiniciar Partida</a>
             <a href="finales.php" class="footer-button">Ver Finales</a>
-            <a href="index.php" class="footer-button">Volver al Menú</a>
+            <a href="../index.php" class="footer-button">Volver al Menú</a>
         </div>
     </footer>
 
@@ -91,7 +91,7 @@ $escena = $result->fetch_assoc();
 
             setTimeout(() => {
                 window.location.href = `escena.php?id=${data.siguiente}`;
-            }, 3500); // 3 segundos para que el usuario vea el resultado
+            }, 3500); 
         })
         .catch(error => {
             console.error('Error:', error);
