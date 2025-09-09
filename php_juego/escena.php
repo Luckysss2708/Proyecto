@@ -54,7 +54,7 @@ $escena = $result->fetch_assoc();
     <footer>
         <div class="footer-buttons">
             <a href="reiniciar_partida.php" class="footer-button">Reiniciar Partida</a>
-            <a href="finales.php" class="footer-button">Ver Finales</a>
+            <a href="emblemas.php" class="footer-button">Emblemas</a>
             <a href="../index.php" class="footer-button">Volver al Menú</a>
         </div>
     </footer>

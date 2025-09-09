@@ -11,8 +11,8 @@
     <div class="user-menu">
       <button id="user-button"><?= htmlspecialchars($_SESSION['usuario_nombre']) ?> ⏷</button>
       <div id="user-dropdown" class="user-dropdown hidden">
-        <a href="/trevisano/php_juego/emblemas.php">Emblemas</a>
         <a href="/trevisano/RL/logout.php">Cerrar sesión</a>
+        <a href="/trevisano/php_juego/emblemas.php" class="footer-button">Emblemas</a>
       </div>
     </div>
   <?php else: ?>

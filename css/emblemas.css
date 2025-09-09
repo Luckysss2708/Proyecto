@@ -1,0 +1,120 @@
+/*
+ * Emblemas.css
+ * Styles specifically for the emblemas.php page
+ */
+
+/* General Body and Main Container Styles */
+body {
+    background-color: #222222;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    color: #e0e0e0;
+}
+
+main.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+/* Header and Footer Styles (Copied from base.css for consistency) */
+header {
+    background-color: #1e1e1e;
+    padding: 15px 20px;
+    border-bottom: 2px solid #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+footer {
+    background-color: #1e1e1e;       
+    color: #cceabb;                  
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #333;      
+    font-size: 0.95em;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.6); 
+}
+
+/* Button Styles from escena.css (for footer links) */
+.footer-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1%;
+}
+
+.footer-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    background-color: #6e2e2e;
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #922;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px #400;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.footer-button:hover {
+    background-color: #922;
+    transform: scale(1.05);
+}
+
+.emblemas-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.emblema {
+    background-color: #f0f0f0;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.emblema:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.emblema-bloqueado {
+    filter: grayscale(100%);
+    opacity: 0.5;
+    background-color: #333;
+    color: #999;
+}
+
+.emblema-bloqueado h3:after {
+    content: " ???";
+}
+
+.emblema-desbloqueado {
+    background-color: #fff;
+    color: #333;
+}
+
+.emblema h3 {
+    margin-top: 0;
+}
+main.container h1 {
+    color: #f26c4f;
+    text-shadow: 2px 2px 8px #000;
+    text-align: center;
+}
+
+.disclaimer {
+    font-size: 1.15em;
+    color: #aaa;
+    margin-top: 10px;
+    text-align: center;
+}

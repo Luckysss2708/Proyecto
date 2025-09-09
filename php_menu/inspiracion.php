@@ -12,7 +12,7 @@ session_start();
 ?>
    <?php include '../FH/header.php'; ?>
     <main class="container">
-    <h1 class="titulo-inspiracion">¿De qué nos inspiramos?</h1>
+    <h1 class="titulo-inspiracion">¿De qué me inspire?</h1>
 
     <div class="texto-inspiracion">
         <p>

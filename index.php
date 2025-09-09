@@ -16,7 +16,7 @@ session_start();
     <?php include 'FH/header.php'; ?>
     <main>
         <div class="Principio">
-            <img src="imagenes/logo.png" alt="Logo broken code" class="inspiration-image">
+            <img src="" alt="Logo broken code" class="inspiration-image">
             <p>Inspirado en los dilemas clásicos del tranvía y las historias "Elige tu propia aventura".</p>
             <?php
             $link = "php_juego/escena.php?id=1";

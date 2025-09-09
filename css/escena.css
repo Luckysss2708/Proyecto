@@ -1,9 +1,8 @@
-
-
 main {
     max-width: 800px;
     margin: 40px auto;
-    background-color: rgba(20, 20, 20, 0.95);
+    background-image: url('../images/fondo.jpg');
+    background-size: cover;
     padding: 40px;
     border: 2px dashed #555;
     border-radius: 10px;
