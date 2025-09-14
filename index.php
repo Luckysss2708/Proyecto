@@ -16,7 +16,7 @@ session_start();
     <?php include 'FH/header.php'; ?>
     <main>
         <div class="Principio">
-            <img src="" alt="Logo broken code" class="inspiration-image">
+            <h1>CODIGO ROTO</h1>
             <p>Inspirado en los dilemas clásicos del tranvía y las historias "Elige tu propia aventura".</p>
             <?php
             $link = "php_juego/escena.php?id=1";

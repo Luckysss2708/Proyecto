@@ -17,6 +17,14 @@ main {
     padding: 20px;
 }
 
+h1 {
+    color: #fd5e3a;
+    text-shadow: 2px 2px 8px #000;
+    text-align: center;
+    font-size: 4.5em;
+}
+
+
 .Principio {
     padding: 30px;
     border-radius: 10px;
