@@ -1,10 +1,10 @@
 <?php
-$host2 = 'localhost';
-    $usuario2 = 'root';
-    $clave2 = '';
-    $bd2 = 'juego_decisiones';
+$host1 = 'localhost';
+$usuario1 = 'phpmyadmin';
+$clave1 = 'RedesInformaticas';
+$bd1 = 'juego_decisiones';
 
-$conn = new mysqli($host2, $usuario2, $clave2, $bd2);
+$conn = new mysqli($host1, $usuario1, $clave1, $bd1);
 
 if ($conn->connect_error) {
 

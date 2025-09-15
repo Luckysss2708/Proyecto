@@ -52,3 +52,13 @@
     color: #bbb;
     font-size: 0.9em;
 }
+
+@media (max-width: 768px) {
+  .imagenes-flex {
+    flex-direction: column; /* Apilar las imágenes una encima de la otra */
+    align-items: center; /* Centrar las imágenes */
+  }
+  .inspiration-image {
+    width: 90%; /* Hacer que las imágenes ocupen la mayoría del ancho de la pantalla */
+  }
+}

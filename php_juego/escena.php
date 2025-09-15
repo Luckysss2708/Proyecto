@@ -17,6 +17,53 @@ if (!$result || $result->num_rows == 0) {
 }
 
 $escena = $result->fetch_assoc();
+
+// Check if the current scene is a final one and unlock the corresponding ending
+if ($escena['siguiente_a'] === NULL && $escena['siguiente_b'] === NULL) {
+    // Map the scene ID to the corresponding ending ID
+    $final_mapping = [
+        13 => 4,
+        15 => 2,
+        16 => 3,
+        23 => 5,
+        24 => 4,
+        26 => 10,
+        27 => 9,
+        28 => 11,
+        30 => 4,
+        32 => 5,
+        33 => 4,
+        34 => 1,
+        35 => 17,
+        37 => 6,
+        38 => 7,
+        40 => 16,
+        41 => 8,
+        45 => 12,
+        46 => 7,
+        47 => 13,
+        49 => 14,
+        50 => 15,
+        55 => 18,
+        58 => 14,
+        59 => 20,
+        60 => 5,
+        62 => 13,
+        63 => 21,
+        64 => 10,
+    ];
+
+    if (isset($final_mapping[$id])) {
+        $final_id = $final_mapping[$id];
+
+        // Prepare and execute the SQL query to insert the unlocked ending
+        $sql_insert_final = "INSERT INTO usuario_finales (usuario_id, final_id) VALUES (?, ?) ON DUPLICATE KEY UPDATE fecha_desbloqueo = NOW()";
+        $stmt = $conn->prepare($sql_insert_final);
+        $stmt->bind_param("ii", $_SESSION['usuario_id'], $final_id);
+        $stmt->execute();
+        $stmt->close();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,6 +89,7 @@ $escena = $result->fetch_assoc();
         </div>
         <?php else: ?>
             <p>Fin de la historia.</p>
+            <a href="reiniciar_partida.php" class="footer-button">Volver a Jugar</a>
         <?php endif; ?>
 
         <div id="resultado" class="resultado-oculto">

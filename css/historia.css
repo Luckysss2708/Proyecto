@@ -17,3 +17,14 @@
     line-height: 1.9;
     white-space: pre-line;
 }
+
+@media (max-width: 800px) {
+  main {
+    padding: 20px; /* Reducir el relleno en pantallas más pequeñas */
+    margin: 20px auto; /* Reducir el margen */
+  }
+
+  main h1 {
+    font-size: 1.5em; /* Reducir el tamaño del título */
+  }
+}

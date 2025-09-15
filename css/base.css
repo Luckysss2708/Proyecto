@@ -1,5 +1,10 @@
+/* base.css */
 
-
+/*
+* Estilos para el cuerpo de la página (body)
+* Utiliza flexbox para que el contenido principal (main) se estire
+* y empuje el footer hacia abajo, manteniendo el pie de página fijo.
+*/
 body {
     background-color: #222222;
     display: flex;
@@ -12,6 +17,10 @@ body {
     color: #e0e0e0;
 }
 
+/*
+* Estilos básicos para el encabezado (header) y pie de página (footer)
+* Estos elementos tienen un padding y un borde que les dan una apariencia consistente.
+*/
 header {
     background-color: #1e1e1e;
     padding: 15px 20px;
@@ -19,6 +28,20 @@ header {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
+footer {
+    background-color: #1e1e1e;
+    color: #cceabb;
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #333;
+    font-size: 0.95em;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/*
+* Estilos para los enlaces de navegación (nav)
+* Define el color, el estilo de texto y el efecto hover para los enlaces.
+*/
 nav a {
     color: #9fc1a3;
     text-decoration: none;
@@ -32,29 +55,26 @@ nav a:hover {
     text-shadow: 0 0 6px #ccc;
 }
 
+/*
+* Estilo para el contenido principal (main)
+* La propiedad flex-grow: 1 hace que main ocupe todo el espacio disponible
+* entre el header y el footer.
+*/
 main {
-    flex-grow: 1; 
-}
-
-footer {
-    background-color: #1e1e1e;       
-    color: #cceabb;                  
-    text-align: center;
-    padding: 20px;
-    border-top: 2px solid #333;      
-    font-size: 0.95em;
-    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.6); 
+    flex-grow: 1;
 }
 
 footer p {
     margin: 8px 0;
     font-size: 1em;
     line-height: 1.6;
-    color: #9fc1a3;                 
+    color: #9fc1a3;
 }
 
-
-/* El resto de tus estilos */
+/*
+* Keyframes para la animación de "glitch"
+* Crea un efecto de falla visual en el texto.
+*/
 @keyframes glitch {
     0% { text-shadow: 2px 0 red, -2px 0 cyan; }
     20% { text-shadow: -2px 0 red, 2px 0 cyan; }
@@ -64,10 +84,15 @@ footer p {
     100% { text-shadow: 0 0 0; }
 }
 
+/* Aplica la animación al pasar el cursor sobre un h1 */
 h1:hover {
     animation: glitch 1s linear infinite;
 }
 
+/*
+* Estilos del header para el menú de navegación
+* Usa flexbox para alinear los elementos a la izquierda y derecha.
+*/
 .nav-header {
     display: flex;
     justify-content: space-between;
@@ -79,6 +104,7 @@ h1:hover {
     align-items: center;
 }
 
+/* Estilos de los enlaces y botones del menú */
 .nav-left a,
 .nav-right a,
 .user-menu button {
@@ -112,7 +138,7 @@ h1:hover {
     flex-direction: column;
     z-index: 100;
     min-width: 150px;
-    font-family: 'Courier New', Courier, monospace; 
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .user-dropdown a {
@@ -129,4 +155,26 @@ h1:hover {
 
 .hidden {
     display: none;
+}
+
+/*
+* Ajustes clave para que el header y el footer sean responsive
+* `width: 100%` asegura que se extiendan por toda la pantalla.
+* `max-width` en sus contenedores internos centra el contenido en pantallas grandes.
+*/
+header, footer {
+    width: 100%;
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+}
+
+.nav-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }

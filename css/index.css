@@ -17,8 +17,8 @@ main {
     padding: 20px;
 }
 
-h1 {
-    color: #fd5e3a;
+.Principio h1 {
+    color: #cceabb;
     text-shadow: 2px 2px 8px #000;
     text-align: center;
     font-size: 4.5em;
@@ -80,4 +80,15 @@ img {
     width: 120%;
     height: 120%;
     padding-right: 40%;
+}
+
+@media (max-width: 800px) {
+  main {
+    padding: 20px; /* Reducir el relleno en pantallas más pequeñas */
+    margin: 20px auto; /* Reducir el margen */
+  }
+
+  main h1 {
+    font-size: 1.5em; /* Reducir el tamaño del título */
+  }
 }

@@ -60,3 +60,12 @@
             color: lightgreen;
             text-align: center;
         }
+
+@media (max-width: 480px) {
+  .login-container,
+  .registro-container {
+    max-width: 90%; /* Ajusta el ancho para que no se pegue a los bordes */
+    margin: 30px auto; /* Un margen más pequeño para pantallas móviles */
+    padding: 20px; /* Reduce el relleno interno */
+  }
+}
