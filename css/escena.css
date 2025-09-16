@@ -14,7 +14,8 @@ main h1 {
     font-size: 2em;
     margin-bottom: 20px;
     text-shadow: 1px 1px 4px #000;
-    color: #f26c4f;
+    color: #cceabb;
+    animation: glitch 1s linear infinite;
 }
 
 main p {

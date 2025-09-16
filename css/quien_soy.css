@@ -23,6 +23,7 @@ h1 {
     color: #f26c4f;
     margin-bottom: 20px;
     text-shadow: 1px 1px 6px #000;
+    animation: glitch 1s linear infinite;
 }
 
 .container-show p {

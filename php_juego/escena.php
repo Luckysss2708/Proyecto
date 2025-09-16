@@ -72,6 +72,7 @@ if ($escena['siguiente_a'] === NULL && $escena['siguiente_b'] === NULL) {
     <title><?= htmlspecialchars($escena['nombre']) ?> - Escena <?= htmlspecialchars($escena['id']) ?></title>
     <link rel="stylesheet" href="../css/escena.css" />
     <link rel="stylesheet" href="../css/base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <main class="container">

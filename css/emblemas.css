@@ -43,7 +43,7 @@ footer {
 }
 
 .footer-button {
-    display: inline-block;
+    box-sizing: border-box;
     padding: 15px 30px;
     font-size: 1.1em;
     background-color: #6e2e2e;
@@ -94,7 +94,7 @@ footer {
 .emblema-desbloqueado {
     background-color: #333;
     color: #f26c4f;
-}
+} 
 
 .emblema-desbloqueado h3{
     color: #f26c4f
@@ -108,7 +108,8 @@ footer {
     margin-top: 0;
 }
 main.container h1 {
-    color: #f26c4f;
+    animation: glitch 1s linear infinite;
+    color: #cceabb;
     text-shadow: 2px 2px 8px #000;
     text-align: center;
 }
@@ -122,6 +123,6 @@ main.container h1 {
 
 @media (max-width: 768px) {
   .emblemas-container {
-    gap: 10px; /* Reducir la separación entre emblemas en pantallas pequeñas */
+    gap: 10px; 
   }
 }

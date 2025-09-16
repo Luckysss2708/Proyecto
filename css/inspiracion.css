@@ -10,6 +10,7 @@
     color: #f26c4f;
     text-shadow: 2px 2px 8px #000;
     margin-bottom: 30px;
+    animation: glitch 1s linear infinite;
 }
 
 .texto-inspiracion {
