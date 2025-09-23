@@ -101,12 +101,21 @@ h1:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    flex-wrap: wrap;
+    /* Elimina esta línea: max-width: 1200px; */
+    /* Elimina esta línea: margin: 0 auto; */
+    padding: 0 20px; /* Mantén el padding para que no se pegue a los bordes de la pantalla */
 }
 
+/* Mantén este estilo para el header principal */
+header {
+    background-color: #1e1e1e;
+    padding: 15px 20px;
+    border-bottom: 2px solid #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    box-sizing: border-box;
+}
 .nav-left, .nav-right {
     display: flex;
     align-items: center;

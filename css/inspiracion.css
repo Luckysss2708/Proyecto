@@ -60,6 +60,6 @@
     align-items: center; /* Centrar las imágenes */
   }
   .inspiration-image {
-    width: 90%; /* Hacer que las imágenes ocupen la mayoría del ancho de la pantalla */
+    width: 100%; /* Hacer que las imágenes ocupen la mayoría del ancho de la pantalla */
   }
 }
