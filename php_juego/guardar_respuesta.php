@@ -1,20 +1,23 @@
+
 <?php
 session_start();
-require_once "../conexion.php"; // Ajusta la ruta según tu proyecto
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../conexion.php';
 
 header("Content-Type: application/json; charset=utf-8");
 
-// Validar sesión
-if (!isset($_SESSION['usuario_id'])) {
-    echo json_encode(["error" => "No autenticado"]);
+function error_response($msg) {
+    echo json_encode(["error" => $msg]);
     exit;
 }
 
-// Validar entrada
+if (!isset($_SESSION['usuario_id'])) {
+    error_response("No autenticado");
+}
+
 $data = json_decode(file_get_contents("php://input"), true);
 if (!$data || !isset($data['escena'], $data['opcion'])) {
-    echo json_encode(["error" => "Datos incompletos"]);
-    exit;
+    error_response("Datos incompletos");
 }
 
 $usuario_id = (int) $_SESSION['usuario_id'];
@@ -31,8 +34,7 @@ $escena = $res->fetch_assoc();
 $stmt->close();
 
 if (!$escena) {
-    echo json_encode(["error" => "Escena no encontrada"]);
-    exit;
+    error_response("Escena no encontrada");
 }
 
 // Guardar la respuesta SIEMPRE (historial)
@@ -56,19 +58,24 @@ $porc_b = $total > 0 ? round(($bRes['c'] / $total) * 100, 1) : 0;
 // Determinar siguiente escena según opción
 $siguiente = ($opcion === "a") ? $escena['siguiente_a'] : $escena['siguiente_b'];
 
-// Si no hay siguiente (es un final), guardar desbloqueo en usuario_finales
-if (is_null($siguiente)) {
-    // Buscar o registrar final correspondiente (si los estás mapeando)
-    // Ejemplo: usar id de la escena como final
-    $final_id = $escena_id;
+// Unificar lógica de finales: usar el mismo mapeo que en escena.php
+$final_mapping = [
+    13 => 4, 15 => 2, 16 => 3, 23 => 5, 24 => 4, 26 => 10, 27 => 9, 28 => 11, 30 => 4,
+    32 => 5, 33 => 4, 34 => 1, 35 => 17, 37 => 6, 38 => 7, 40 => 16, 41 => 8, 45 => 12,
+    46 => 7, 47 => 13, 49 => 14, 50 => 15, 55 => 18, 58 => 14, 59 => 20, 60 => 5, 62 => 13,
+    63 => 21, 64 => 10,
+];
 
-    $stmt = $conn->prepare("INSERT IGNORE INTO usuario_finales (usuario_id, final_id) VALUES (?, ?)");
-    $stmt->bind_param("ii", $usuario_id, $final_id);
-    $stmt->execute();
-    $stmt->close();
+if (is_null($siguiente)) {
+    if (isset($final_mapping[$escena_id])) {
+        $final_id = $final_mapping[$escena_id];
+        $stmt = $conn->prepare("INSERT INTO usuario_finales (usuario_id, final_id) VALUES (?, ?) ON DUPLICATE KEY UPDATE fecha_desbloqueo = NOW()");
+        $stmt->bind_param("ii", $usuario_id, $final_id);
+        $stmt->execute();
+        $stmt->close();
+    }
 }
 
-// Respuesta JSON
 echo json_encode([
     "a"         => $porc_a,
     "b"         => $porc_b,
