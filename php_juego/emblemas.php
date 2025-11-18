@@ -1,8 +1,9 @@
 <?php
-include '../conexion.php'; 
+require_once __DIR__ . '/../config.php';
+include __DIR__ . '/../conexion.php'; 
 session_start();
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: ../RL/login.php");
+    header("Location: " . BASE_URL . "/RL/login.php");
     exit();
 }
 
@@ -35,8 +36,8 @@ $stmt_desbloqueados->close();
 <head>
     <meta charset="UTF-8">
     <title>Emblemas Desbloqueados</title>
-    <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/emblemas.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/base.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/emblemas.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -66,8 +67,8 @@ $stmt_desbloqueados->close();
 
     <footer>
         <div class="footer-buttons">
-            <a href="escena.php" class="footer-button">Volver al juego</a>
-            <a href="../index.php" class="footer-button">Volver al Menú Principal</a>
+            <a href="<?= BASE_URL ?>/php_juego/escena.php" class="footer-button">Volver al juego</a>
+            <a href="<?= BASE_URL ?>/index.php" class="footer-button">Volver al Menú Principal</a>
         </div>
     </footer>
 </body>

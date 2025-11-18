@@ -1,6 +1,7 @@
 <?php
+require_once __DIR__ . '/../config.php';
 session_start();
-include '../conexion.php'; 
+include __DIR__ . '/../conexion.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
@@ -22,20 +23,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['usuario_nombre'] = $usuario['nombre'];
             $_SESSION['usuario_email'] = $usuario['email'];
 
-            header("Location: ../index.php");
+            header("Location: " . BASE_URL . "/index.php");
             exit();
         } else {
-            header("Location: login.php?error=Contraseña incorrecta");
+            header("Location: " . BASE_URL . "/RL/login.php?error=Contraseña incorrecta");
             exit();
         }
     } else {
-        header("Location: login.php?error=Correo no registrado");
+        header("Location: " . BASE_URL . "/RL/login.php?error=Correo no registrado");
         exit();
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: login.php");
+    header("Location: " . BASE_URL . "/RL/login.php");
     exit();
 }

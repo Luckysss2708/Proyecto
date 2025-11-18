@@ -1,12 +1,13 @@
 <?php
+require_once __DIR__ . '/../config.php';
 session_start();
 
 if (!isset($_SESSION['usuario_id'])) {
-    header("Location: ../RL/login.php");
+    header("Location: " . BASE_URL . "/RL/login.php");
     exit();
 }
 
-include '../conexion.php'; 
+include __DIR__ . '/../conexion.php'; 
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 1;
 $sql = "SELECT * FROM escenas WHERE id = $id";
@@ -70,8 +71,8 @@ if ($escena['siguiente_a'] === NULL && $escena['siguiente_b'] === NULL) {
 <head>
     <meta charset="UTF-8" />
     <title><?= htmlspecialchars($escena['nombre']) ?> - Escena <?= htmlspecialchars($escena['id']) ?></title>
-    <link rel="stylesheet" href="../css/escena.css" />
-    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/escena.css" />
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -102,19 +103,19 @@ if ($escena['siguiente_a'] === NULL && $escena['siguiente_b'] === NULL) {
 
     <footer>
         <div class="footer-buttons">
-            <a href="reiniciar_partida.php" class="footer-button">Reiniciar Partida</a>
-            <a href="emblemas.php" class="footer-button">Emblemas</a>
-            <a href="../index.php" class="footer-button">Volver al Menú</a>
+            <a href="<?= BASE_URL ?>/php_juego/reiniciar_partida.php" class="footer-button">Reiniciar Partida</a>
+            <a href="<?= BASE_URL ?>/php_juego/emblemas.php" class="footer-button">Emblemas</a>
+            <a href="<?= BASE_URL ?>/index.php" class="footer-button">Volver al Menú</a>
         </div>
     </footer>
 
-    <script src="../script.js"></script>
+    <script src="<?= BASE_URL ?>/script.js"></script>
 
     <script>
     function responder(opcion, escenaId) {
         document.querySelectorAll('button').forEach(btn => btn.disabled = true);
         
-        fetch('guardar_respuesta.php', {
+        fetch('<?= BASE_URL ?>/php_juego/guardar_respuesta.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -139,7 +140,7 @@ if ($escena['siguiente_a'] === NULL && $escena['siguiente_b'] === NULL) {
             document.getElementById('resultado').classList.add('resultado-visible');
 
             setTimeout(() => {
-                window.location.href = `escena.php?id=${data.siguiente}`;
+                window.location.href = `<?= BASE_URL ?>/php_juego/escena.php?id=${data.siguiente}`;
             }, 3500); 
         })
         .catch(error => {

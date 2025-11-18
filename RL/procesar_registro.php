@@ -1,5 +1,6 @@
 <?php
-include '../conexion.php'; 
+require_once __DIR__ . '/../config.php';
+include __DIR__ . '/../conexion.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre = trim($_POST['nombre']);
@@ -26,13 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("sss", $nombre, $email, $hash);
 
     if ($stmt->execute()) {
-        header("Location: ../index.php");
+        header("Location: " . BASE_URL . "/index.php");
         exit();
     } else {
-        header("Location: registro.php?error=Error al registrar usuario.");
+        header("Location: " . BASE_URL . "/RL/registro.php?error=Error al registrar usuario.");
         exit();
     }
 } else {
-    header("Location: registro.php");
+    header("Location: " . BASE_URL . "/RL/registro.php");
     exit();
 }

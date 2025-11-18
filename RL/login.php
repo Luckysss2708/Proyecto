@@ -7,8 +7,9 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión - Código Roto</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <?php require_once __DIR__ . '/../config.php'; ?>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/base.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -17,13 +18,13 @@ session_start();
         <?php if (isset($_GET['error'])): ?>
             <p class="error"><?php echo htmlspecialchars($_GET['error']); ?></p>
         <?php endif; ?>
-        <form method="POST" action="procesar_login.php">
+        <form method="POST" action="<?= BASE_URL ?>/RL/procesar_login.php">
             <input type="email" name="email" placeholder="Correo electrónico" required>
             <input type="password" name="password" placeholder="Contraseña" required>
             <input type="submit" value="Ingresar">
         </form>
         <p class="register-link">
-            ¿No tenés cuenta? <a href="registro.php">Regístrate aquí</a>
+            ¿No tenés cuenta? <a href="<?= BASE_URL ?>/RL/registro.php">Regístrate aquí</a>
         </p>
     </div>
 </body>

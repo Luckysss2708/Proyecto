@@ -7,8 +7,9 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Registrarse - Código Roto</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/registro.css">
+    <?php require_once __DIR__ . '/../config.php'; ?>
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/base.css">
+    <link rel="stylesheet" href="<?= BASE_URL }}/css/registro.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -20,7 +21,7 @@ session_start();
         <?php if (isset($_GET['exito'])): ?>
             <p class="success"><?php echo htmlspecialchars($_GET['exito']); ?></p>
         <?php endif; ?>
-        <form method="POST" action="procesar_registro.php">
+        <form method="POST" action="<?= BASE_URL ?>/RL/procesar_registro.php">
             <input type="text" name="nombre" placeholder="Nombre completo" required>
             <input type="email" name="email" placeholder="Correo electrónico" required>
             <input type="password" name="password" placeholder="Contraseña" required>
