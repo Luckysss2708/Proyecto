@@ -9,7 +9,7 @@ session_start();
     <title>Registrarse - Código Roto</title>
     <?php require_once __DIR__ . '/../config.php'; ?>
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/base.css">
-    <link rel="stylesheet" href="<?= BASE_URL }}/css/registro.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/registro.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
